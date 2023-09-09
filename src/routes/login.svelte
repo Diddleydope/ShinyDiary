@@ -1,15 +1,19 @@
     <script>
-        import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+        import { getAuth, createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword } from "firebase/auth";
         import {db, auth} from './+page.svelte';
-        let email = "hello@gmail.com";
-        let password = "1234hello";
+        let email = "";
+        let password = "";
 
-        //Sign up the User
-        createUserWithEmailAndPassword(auth, email, password).then(cred => {
-            console.log("Hello LMAO");
+        auth.onAuthStateChanged(user => {
+            if(user){
+                console.log("user has just logged in " , user);
+            }else{
+                console.log("user has logged out");
+            }
         })
 
-        //PROBLEM --> FUNCTION AUTOMATICALLY EXECUTES, WHY?? 
+        //AUTH CHANGE RUNNING MULTIPLE TIMES --> WHY?
     </script>
     
     
@@ -20,9 +24,27 @@
     </div>
 
     <div class="buttonContainer">
-        <button class="Buttons" id="signin">Sign in</button>
-        <button class="Buttons" id="signup" 
-        on:click={() => createUserWithEmailAndPassword(auth,email,password)}>Sign up</button>
+        <!--Sign user in-->
+        <button type="submit" class="Buttons" id="signin" 
+        on:click={
+                () => signInWithEmailAndPassword(auth, email, password).then(cred =>{
+                email = "";
+                password = "";
+            })
+        }>Sign in</button>
+
+        <!--Sign user up-->
+        <button type="submit" class="Buttons" id="signup" 
+        on:click={
+                () => createUserWithEmailAndPassword(auth,email,password).then(cred => {
+                email = "";
+                password = "";
+            })
+        }>Sign up</button>
+
+        <!--Sign user out-->
+        <button type="submit" class = "Buttons" 
+        on:click={() => auth.signOut()}>Sign out</button>
     </div>
     
     
