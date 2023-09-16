@@ -1,50 +1,51 @@
-    <script>
+    <script lang="ts" context="module">
         import { getAuth, createUserWithEmailAndPassword, 
             signInWithEmailAndPassword } from "firebase/auth";
-        import {db, auth} from './+page.svelte';
+        import {auth} from './+page.svelte';
+        import { loggedIn } from './store';
         let email = "";
         let password = "";
-
-        auth.onAuthStateChanged(user => {
-            if(user){
-                console.log("user has just logged in " , user);
-            }else{
-                console.log("user has logged out");
-            }
-        })
-
-        //AUTH CHANGE RUNNING MULTIPLE TIMES --> WHY?
     </script>
     
-    
-    <div class="loginContainer">
-        <input  id= "emailInput" class="loginButtons" type="email" bind:value={email}/>
-        <br>
-        <input  id= "passwordInput" class= "loginButtons" type="password" bind:value={password}/>
-    </div>
 
-    <div class="buttonContainer">
-        <!--Sign user in-->
-        <button type="submit" class="Buttons" id="signin" 
-        on:click={
-                () => signInWithEmailAndPassword(auth, email, password).then(cred =>{
-                email = "";
-                password = "";
-            })
-        }>Sign in</button>
 
-        <!--Sign user up-->
-        <button type="submit" class="Buttons" id="signup" 
-        on:click={
-                () => createUserWithEmailAndPassword(auth,email,password).then(cred => {
-                email = "";
-                password = "";
-            })
-        }>Sign up</button>
+    <div class="Container">
+        {#if $loggedIn == true}
+            <!--Sign user out-->
+            <div class="buttonContainer">
+                <button type="submit" class = "Buttons" 
+                on:click={() => auth.signOut()}>Sign out</button>
+            </div>
+            
+        {:else}
+                <!--Sign user in-->
+            <div class="loginContainer">
+                <input  id= "emailInput" class="loginButtons" type="email" bind:value={email}/>
+                <br>
+                <input  id= "passwordInput" class= "loginButtons" type="password" bind:value={password}/>
+            </div>
+            
+            <div class = buttonContainer>
 
-        <!--Sign user out-->
-        <button type="submit" class = "Buttons" 
-        on:click={() => auth.signOut()}>Sign out</button>
+                <button type="submit" class="Buttons" id="signin" 
+                on:click={
+                        () => signInWithEmailAndPassword(auth, email, password).then(cred =>{
+                        email = "";
+                        password = "";
+                    })
+                }>Sign in</button>
+
+
+                <!--Sign user up-->
+                <button type="submit" class="Buttons" id="signup" 
+                on:click={
+                        () => createUserWithEmailAndPassword(auth,email,password).then(cred => {
+                        email = "";
+                        password = "";
+                    })
+                }>Sign up</button>
+        </div>
+        {/if}
     </div>
     
     

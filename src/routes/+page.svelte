@@ -1,12 +1,13 @@
 <script lang="ts" context="module">
     // Import the functions you need from the SDKs you need
+    import {onMount} from 'svelte';
     import { initializeApp } from "firebase/app";
-    import { getAnalytics } from "firebase/analytics";
     import { getAuth, initializeAuth } from "firebase/auth";
     import { getFirestore } from "firebase/firestore";
     // TODO: Add SDKs for Firebase products that you want to use
-    import { invoke } from '@tauri-apps/api/tauri';
-    import Login from './login.svelte'
+    import { loggedIn } from './store';
+    import Login from './login.svelte';
+
 
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -20,18 +21,33 @@
     measurementId: "G-M3TE3FHMF6"
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 //make auth and firestore references
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+
+
+auth.onAuthStateChanged(user => {
+        if(user){
+            console.log("user has just logged in " , user);
+            loggedIn.set(true);
+        }else{
+            console.log("user has logged out");
+            loggedIn.set(false);
+        }
+    })
 </script>
 
-
+{#if $loggedIn==true}
+<h1>You are logged in!</h1>
+<Login></Login>
+{:else}
 <h1 class="title">Welcome to ShinyDiary!</h1>
 <Login></Login>
+{/if}
 
 
 <style>
