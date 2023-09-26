@@ -3,14 +3,18 @@
             signInWithEmailAndPassword } from "firebase/auth";
         import {auth} from './+page.svelte';
         import { loggedIn } from './store';
+        import MainPage from './+page.svelte';
         let email = "";
         let password = "";
+
+        
+
     </script>
     
-
+  
 
     <div class="Container">
-        {#if $loggedIn == true}
+        {#if $loggedIn==true}
             <!--Sign user out-->
             <div class="buttonContainer">
                 <button type="submit" class = "Buttons" 
@@ -44,6 +48,8 @@
                         password = "";
                     })
                 }>Sign up</button>
+
+
         </div>
         {/if}
     </div>

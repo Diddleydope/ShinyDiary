@@ -7,6 +7,7 @@
     // TODO: Add SDKs for Firebase products that you want to use
     import { loggedIn } from './store';
     import Login from './login.svelte';
+    import ActiveHunts from './ActiveHunts/+page.svelte';
 
 
     // Your web app's Firebase configuration
@@ -29,25 +30,26 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 
-
 auth.onAuthStateChanged(user => {
-        if(user){
-            console.log("user has just logged in " , user);
-            loggedIn.set(true);
-        }else{
-            console.log("user has logged out");
-            loggedIn.set(false);
-        }
-    })
+    if(user){
+        console.log("user has just logged in " , user);
+        loggedIn.set(true);
+    }else{
+         console.log("user has logged out");
+        loggedIn.set(false);
+    }
+});
+
 </script>
 
+<div>
 {#if $loggedIn==true}
-<h1>You are logged in!</h1>
-<Login></Login>
+    <ActiveHunts></ActiveHunts>
 {:else}
-<h1 class="title">Welcome to ShinyDiary!</h1>
-<Login></Login>
+    <h1 class="title">log in</h1>
+    <Login></Login>
 {/if}
+</div>
 
 
 <style>
@@ -56,4 +58,3 @@ auth.onAuthStateChanged(user => {
     text-align: center;
     }   
 </style>
-
