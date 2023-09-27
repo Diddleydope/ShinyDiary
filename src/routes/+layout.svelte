@@ -9,8 +9,8 @@
 {#if $loggedIn==true}
     <slot></slot>
     <header class="navHeader">
-        <img src={Pokeball} alt="" id="pokeball">
-        <nav>
+        <nav class="navBar">
+            <img src={Pokeball} alt="" id="pokeball">
             <ul class="navLinks">
                 <a href="../ActiveHunts">
                     <button class="navButtons">ActiveHunts</button>
@@ -33,7 +33,6 @@
                 </a>
                 
             </ul>
-            
         </nav>
         <Login></Login>
     </header>
@@ -47,12 +46,13 @@
 
     .navHeader{
         display: grid;
-        position: absolute;
+        position: fixed;
         background-color:ghostwhite;
         top:0;
         width:100vw;
         height: 5vw;
         left:0;
+        overscroll-behavior: none;
     }
 
     .navButtons{
@@ -80,7 +80,6 @@
         top:-110vh;
         left: -70vw;
     }
-
     
 </style>
 

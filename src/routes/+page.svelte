@@ -4,6 +4,7 @@
     import { initializeApp } from "firebase/app";
     import { getAuth, initializeAuth } from "firebase/auth";
     import { getFirestore } from "firebase/firestore";
+    import { getStorage } from "firebase/storage";
     // TODO: Add SDKs for Firebase products that you want to use
     import { loggedIn } from './store';
     import Login from './login.svelte';
@@ -28,6 +29,7 @@ const app = initializeApp(firebaseConfig);
 //make auth and firestore references
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
 
 
 auth.onAuthStateChanged(user => {
@@ -42,7 +44,7 @@ auth.onAuthStateChanged(user => {
 
 </script>
 
-<div>
+<div class="container">
 {#if $loggedIn==true}
     <ActiveHunts></ActiveHunts>
 {:else}
@@ -57,4 +59,6 @@ auth.onAuthStateChanged(user => {
     margin-top: 30vh;
     text-align: center;
     }   
+
+
 </style>
