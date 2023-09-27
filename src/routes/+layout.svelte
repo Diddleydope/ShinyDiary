@@ -2,64 +2,85 @@
     import Login from './login.svelte';
     import { loggedIn } from './store';
     import MainPage from './+page.svelte';
+    import Pokeball from '$lib/pokeball.png';
 
-    /**
-     * @type {HTMLElement}
-     */
-    let headerVar;
-
-    function setSticky(){
-        headerVar.classList.add("sticky");
-    }
 </script>
 
 {#if $loggedIn==true}
     <slot></slot>
-    <header class="navHeader" on:scroll={setSticky} bind:this={headerVar}>
+    <header class="navHeader">
+        <img src={Pokeball} alt="" id="pokeball">
         <nav>
             <ul class="navLinks">
                 <a href="../ActiveHunts">
-                    <button>ActiveHunts</button>
+                    <button class="navButtons">ActiveHunts</button>
                 </a>
 
                 <a href="../LatestShinies">
-                    <button>Latest Shinies</button>
+                    <button class="navButtons">Latest Shinies</button>
                 </a>
 
                 <a href="../ShinyDex">
-                    <button>Shiny Dex</button>
+                    <button class="navButtons">Shiny Dex</button>
                 </a>
 
                 <a href="../Settings">
-                    <button>Settings</button>
+                    <button class="navButtons">Settings</button>
                 </a>
 
                 <a href="../Social">
-                    <button>Social</button>
+                    <button class="navButtons">Social</button>
                 </a>
+                
             </ul>
+            
         </nav>
         <Login></Login>
     </header>
+    
 {:else}
     <slot></slot>
 {/if}
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
     .navHeader{
+        display: grid;
         position: absolute;
-        overflow: hidden;
         background-color:ghostwhite;
         top:0;
         width:100vw;
-        height: 10vw;
+        height: 5vw;
         left:0;
     }
-    /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-    .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+
+    .navButtons{
+        position: relative;
+        width: 9vw;
+        margin-right: 2vw;
+        left:23vw;
+        height: 4vh;
+        top:1.5vh;
+        background-color: transparent;
+        font-family: 'Lobster', cursive;
+        font-size: large;
+        border: 2px;
+        border-style: solid;
+        border-color: ghostwhite;
     }
+
+    .navButtons:hover{
+        border-bottom-color: black;
+    }
+
+    #pokeball{
+        position: absolute;
+        scale: 0.03;
+        top:-110vh;
+        left: -70vw;
+    }
+
+    
 </style>
 

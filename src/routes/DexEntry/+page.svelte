@@ -14,7 +14,7 @@
         width: 15vw;
         border:transparent;
         border-radius: 1.5rem;
-        top:8vh;
+        top:2vh;
         left:2vw;
     }
 </style>

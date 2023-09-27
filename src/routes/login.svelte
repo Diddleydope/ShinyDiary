@@ -16,8 +16,8 @@
     <div class="Container">
         {#if $loggedIn==true}
             <!--Sign user out-->
-            <div class="buttonContainer">
-                <button type="submit" class = "Buttons" 
+            <div class="buttonContainer" id="signOutContainer">
+                <button type="submit" id="signOutButton"
                 on:click={() => auth.signOut()}>Sign out</button>
             </div>
             
@@ -56,6 +56,8 @@
     
     
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
         .loginContainer{
             text-align: center;
         }
@@ -84,8 +86,11 @@
             width: 15vw;
             height:4vh;
             border-radius: 3%;
-            border-color: transparent;
-            background-color:cornsilk;
+            border-style: solid;
+            border:20px;
+            border-radius: 10;
+            border-color: black;
+            background-color:transparent;
         }
 
         #signin{
@@ -95,5 +100,16 @@
         #signup{
             margin-left: 0.25vw;
         }
+
+
+        #signOutButton{
+            position:absolute;
+            right:6vw;
+            top:2.3vw;
+            font-family: 'Lobster', cursive;
+            font-size: large;
+            background-color: transparent;
+        }
+        
     </style>
     
