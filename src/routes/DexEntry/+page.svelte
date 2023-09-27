@@ -1,24 +1,34 @@
 <script>
     import Pokeball from '$lib/pokeball.png';
     import {storage} from '../+page.svelte';
-    import { getDownloadURL, ref } from 'firebase/storage';
+    import { getDownloadURL, ref , listAll} from 'firebase/storage';
     
 
-    //NEXT --> MAKE DEX ENTRY INTO AN OBJECT AND PRINT OUT POKEDEX
+    //NEXT --> USE LISTALL COMMAND AND OUTPUT IMAGES ONTO SEPERATE ENTRY OBJECT
     /**
      * @type {HTMLImageElement}
      */
     let imgHolder;
 
     // Create a reference with an initial file path and name
-    const pathReference = ref(storage, 'Pokémon/Bulbasaur.png');
+    const dirReference = ref(storage, 'Pokémon');
 
-    getDownloadURL(pathReference)
-    .then((url) => {
-    // Insert url into an <img> tag to "download"
+    // Create a reference under which you want to list
+const listReference = ref(storage, 'Pokémon');
+
+listAll(listReference)
+  .then((res) => {
+    res.items.forEach((listRef) => {
+        let pokeRef = ref(storage, listRef.fullPath);
+        getDownloadURL(pokeRef)
+        .then((url) => {
+        // Insert url into an <img> tag to "download"
         imgHolder.setAttribute('src', url);
-     })
-
+        })
+    });
+  })
+    // Insert url into an <img> tag to "download"
+    
     let entry = {
         image : Pokeball,
     }
@@ -45,9 +55,9 @@
 
     .pokeImages{
         position: absolute;
-        top:-108vh;
-        left:-70vw;
-        scale: 0.05;
+        top:0vh;
+        left:0vw;
+        scale: 0.4;
     }
 
 </style>
