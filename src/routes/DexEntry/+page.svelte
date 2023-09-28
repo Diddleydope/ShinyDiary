@@ -1,44 +1,45 @@
-<script>
-    import Pokeball from '$lib/pokeball.png';
+<script context="module">
     import {storage} from '../+page.svelte';
     import { getDownloadURL, ref , listAll} from 'firebase/storage';
-    
 
-    //NEXT --> USE LISTALL COMMAND AND OUTPUT IMAGES ONTO SEPERATE ENTRY OBJECT
+   
     /**
-     * @type {HTMLImageElement}
+     * @type {any}
      */
-    let imgHolder;
+    export let imageSource;
 
-    // Create a reference with an initial file path and name
-    const dirReference = ref(storage, 'Pokémon');
-
-    // Create a reference under which you want to list
-const listReference = ref(storage, 'Pokémon');
-
-listAll(listReference)
-  .then((res) => {
-    res.items.forEach((listRef) => {
-        let pokeRef = ref(storage, listRef.fullPath);
-        getDownloadURL(pokeRef)
-        .then((url) => {
-        // Insert url into an <img> tag to "download"
-        imgHolder.setAttribute('src', url);
-        })
-    });
-  })
-    // Insert url into an <img> tag to "download"
-    
-    let entry = {
-        image : Pokeball,
+     /**
+     * @param {any} imgURL
+     */
+     function Attributes(imgURL){
+        this.imgURL = imgURL;
     }
+
+
+    // @ts-ignore
+    export const attributeList = [];
+    // Create a reference under which you want to list
+    setTimeout(() => {
+        const listReference = ref(storage, 'Pokémon');
+
+        listAll(listReference)
+        .then((res) => {
+            res.items.forEach((listRef) => {
+                let pokeRef = ref(storage, listRef.fullPath);
+                getDownloadURL(pokeRef)
+                .then((url) => {
+                    const attributeObj = new Attributes(url);
+                    attributeList.push(attributeObj);
+                })
+            });
+        })
+    }, 5);
+
 </script>
 
-
-
 <div class="enclosure">
-    <img src="" alt="" class="pokeImages" bind:this={imgHolder}>
-    <div class="secondEnclosure"></div>
+    <img src={imageSource} alt="" class="pokeImages">
+    <div class="secondEnclosure">{imageSource}</div>
 </div>
 
 <style>
