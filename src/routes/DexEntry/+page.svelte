@@ -1,23 +1,21 @@
-<script context="module">
+<script context="module" lang="ts">
     import {storage} from '../+page.svelte';
     import { getDownloadURL, ref , listAll} from 'firebase/storage';
 
    
-    /**
-     * @type {any}
-     */
-    export let imageSource;
 
-     /**
-     * @param {any} imgURL
-     */
-     function Attributes(imgURL){
-        this.imgURL = imgURL;
+    export let imageSource:string="";
+
+ 
+    class Attributes {
+        constructor(public imgURL:string){
+            this.imgURL = imgURL;
+        }
     }
 
-
-    // @ts-ignore
-    export const attributeList = [];
+    
+    export const attributeList:Attributes[] = [];
+    
     // Create a reference under which you want to list
     setTimeout(() => {
         const listReference = ref(storage, 'Pokémon');
