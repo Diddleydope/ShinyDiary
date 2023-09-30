@@ -1,33 +1,42 @@
-<script lang="ts">
-    import {storage} from '../+page.svelte';
-    import { getDownloadURL, ref , listAll} from 'firebase/storage';
-    import { imageSource, attributeList, Attributes } from './logic';
-
-    
+<script context="module" lang="ts">
+    export class Attributes {
+        constructor(public imgURL:string){
+            this.imgURL = imgURL;
+        }
+    }
+    export const attributeList:Attributes[] = [];
     // Create a reference under which you want to list
     setTimeout(() => {
         const listReference = ref(storage, 'Pokémon');
 
-        listAll(listReference)
-        .then((res) => {
+        listAll(listReference).then((res) => {
             res.items.forEach((listRef) => {
                 let pokeRef = ref(storage, listRef.fullPath);
-                getDownloadURL(pokeRef)
-                .then((url: string) => {
-                    const attributeObj:Attributes = new Attributes(url);
+                getDownloadURL(pokeRef).then((url) => {
+                    const attributeObj = new Attributes(url);
                     attributeList.push(attributeObj);
                 })
             });
         })
-    }, 5);
-
+    }, 10);
 </script>
 
-<div class="enclosure">
+
+
+<script lang="ts">
+    import { getDownloadURL, ref , listAll} from 'firebase/storage';
+    import {storage} from '../+page.svelte';
+    
+    export let imageSource:string;
+</script>
+
+
+
+<div class="enclosure gridContainer">
     <img src={imageSource} alt="" class="pokeImages">
     <div class="secondEnclosure"></div>
 </div>
-⁄ß
+
 <style>
     .enclosure{
         position: relative;
@@ -42,9 +51,8 @@
 
     .pokeImages{
         position: absolute;
-        top:0vh;
-        left:0vw;
+        left:-3vw;
+        top:-5vh;
         scale: 0.4;
     }
-
 </style>

@@ -5,31 +5,6 @@
 <div>
     <h1>ActiveHunts</h1>
     <div class="gridContainer">
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
-        <DexEntry></DexEntry>
     </div>
 </div>
 
