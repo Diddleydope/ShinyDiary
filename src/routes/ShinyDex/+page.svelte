@@ -1,6 +1,8 @@
 <script>
     import DexEntry from '../DexEntry/+page.svelte';
-    import {attributeList} from '../DexEntry/+page.svelte';
+    import {attributeList} from '../DexEntry/logic';
+    
+    console.log(attributeList[0].imgURL);
 </script>
 
 <div>

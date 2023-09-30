@@ -1,20 +1,8 @@
-<script context="module" lang="ts">
+<script lang="ts">
     import {storage} from '../+page.svelte';
     import { getDownloadURL, ref , listAll} from 'firebase/storage';
+    import { imageSource, attributeList, Attributes } from './logic';
 
-   
-
-    export let imageSource:string="";
-
- 
-    class Attributes {
-        constructor(public imgURL:string){
-            this.imgURL = imgURL;
-        }
-    }
-
-    
-    export const attributeList:Attributes[] = [];
     
     // Create a reference under which you want to list
     setTimeout(() => {
@@ -25,8 +13,8 @@
             res.items.forEach((listRef) => {
                 let pokeRef = ref(storage, listRef.fullPath);
                 getDownloadURL(pokeRef)
-                .then((url) => {
-                    const attributeObj = new Attributes(url);
+                .then((url: string) => {
+                    const attributeObj:Attributes = new Attributes(url);
                     attributeList.push(attributeObj);
                 })
             });
@@ -37,9 +25,9 @@
 
 <div class="enclosure">
     <img src={imageSource} alt="" class="pokeImages">
-    <div class="secondEnclosure">{imageSource}</div>
+    <div class="secondEnclosure"></div>
 </div>
-
+⁄ß
 <style>
     .enclosure{
         position: relative;
