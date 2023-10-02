@@ -1,14 +1,22 @@
-<script>
+<script lang="ts">
     import DexEntry from '../DexEntry/+page.svelte';
     import {attributeList} from '../DexEntry/+page.svelte';
+/*
+    console.log(attributeList[0].imgURL);
+    console.log(attributeList[1].imgURL);
+    console.log(attributeList[2].imgURL);
+    console.log(attributeList[3].imgURL);
+    console.log(attributeList[4].imgURL);
+    console.log(attributeList[5].imgURL);
+*/
+    
 </script>
 
 <div>
     <h1>ShinyDex</h1>
     <div class="gridContainer">
     {#each attributeList as attribute}
-    
-        <DexEntry imageSource={attribute.imgURL}/>
+        <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name}/>
     {/each}
     </div>
 </div>
