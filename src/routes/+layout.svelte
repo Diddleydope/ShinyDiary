@@ -39,10 +39,17 @@
     
 {:else}
     <slot></slot>
+    <h1 class="title">log in</h1>
+    <Login></Login>
 {/if}
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    .title{
+    margin-top: 30vh;
+    text-align: center;
+    }   
 
     .navHeader{
         display: grid;

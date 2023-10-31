@@ -56,6 +56,7 @@
     import { doc, collection, getDocs} from "firebase/firestore";
     import 'firebase/firestore';
     import Layout from '../+layout.svelte';
+    import { loggedIn } from '../store';
     
     export let imageSource:string;
     export let pokemonName:string;
@@ -64,20 +65,22 @@
 
 
 <div class="enclosure">
-    <h2>{pokemonName}</h2>
-    <img src={imageSource} alt="" class="pokeImages">
-    <div class="secondEnclosure"></div>
+    {#if $loggedIn==true}
+        <h2>{pokemonName}</h2>
+        <img src={imageSource} alt="" class="pokeImages">
+        <div class="secondEnclosure"></div>
+    {/if}
 </div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
     .enclosure{
         position: relative;
         background-color: whitesmoke;
         height: 23vh;
         width: 17vw;
-        top:2vh;
+        top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;
         border-radius: 1.5rem;
@@ -98,8 +101,8 @@
 
     h2{
         position:absolute;
-        right:2vw;
-        font-family: 'Lobster', cursive;
-        font-size: 140%;
+        right:1.5vw;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 130%;
     }
 </style>

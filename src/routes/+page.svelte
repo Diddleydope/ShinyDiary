@@ -47,18 +47,12 @@ auth.onAuthStateChanged(user => {
 <div class="container">
 {#if $loggedIn==true}
     <ActiveHunts></ActiveHunts>
-{:else}
-    <h1 class="title">log in</h1>
-    <Login></Login>
 {/if}
 </div>
 
 
 <style>
-    .title{
-    margin-top: 30vh;
-    text-align: center;
-    }   
+
 
 
 </style>

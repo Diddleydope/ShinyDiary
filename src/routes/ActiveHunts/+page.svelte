@@ -3,7 +3,6 @@
 </script>
 
 <div>
-    <h1>ActiveHunts</h1>
     <div class="gridContainer">
     </div>
 </div>
