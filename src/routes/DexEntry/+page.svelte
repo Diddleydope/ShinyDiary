@@ -6,36 +6,38 @@
         }
     }
 
-
     export const attributeList:Attributes[] = [];
-    let index:number = 0;
+    export let currentGen = 5;
 
+    gen.subscribe((value) => {
+        currentGen = value;
+        console.log(currentGen)
+    })
     
     // Create a reference under which you want to list
     setTimeout(async () => {
-    const listReference = ref(storage, "Pokémon/Normal");
-    const storageRef = collection(db, 'Pokémon');
-    const pokeList = await list(listReference, { maxResults: 10 });
-    const infoList =  await getDocs(storageRef);
-    /*
+    const storageRef = collection(db, 'Pokémon/Generation' + currentGen + '/Pokémon');
+    const q = query(storageRef, orderBy("dexNr", "asc"));
+    const querySnapshot = await getDocs(q);
+
     attributeList.push(
         ...(await Promise.all(
-        pokeList.items.map(async (listRef) => {
-            const url = await getDownloadURL(ref(storage, listRef.fullPath)); 
-            const attributeObj = new Attributes(url);            
-            return attributeObj;
-        })
-        ))
-    );*/
-    attributeList.push(
-        ...(await Promise.all(
-            infoList.docs.map(async (doc) => {
-                console.log(doc.data().picture);
-                const infoObj = new Attributes(doc.data().URL, doc.data().name);
+            querySnapshot.docs.map(async (doc) => {
+                const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
                 return infoObj;
             })
         ))
-    )
+    );
+        
+    /*
+    attributeList.push(
+        ...(await Promise.all(
+            infoList.docs.map(async (doc) => {
+                const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
+                return infoObj;
+            })
+        ))
+    )*/
         /*listAll(listReference).then((res) => {
             res.items.forEach((listRef) => {
                 let pokeRef = ref(storage, listRef.fullPath);
@@ -53,10 +55,11 @@
 <script lang="ts">
     import { getDownloadURL, ref , listAll, list} from 'firebase/storage';
     import {storage, db} from '../+page.svelte';
-    import { doc, collection, getDocs} from "firebase/firestore";
+    import { doc, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
     import 'firebase/firestore';
     import Layout from '../+layout.svelte';
     import { loggedIn } from '../store';
+    import { gen } from '../store';
     
     export let imageSource:string;
     export let pokemonName:string;
@@ -94,9 +97,9 @@
 
     .pokeImages{
         position: absolute;
-        left:0vw;
+        left:0.5vw;
         top:0vh;
-        scale: 1;
+        scale: 1.25;
     }
 
     h2{

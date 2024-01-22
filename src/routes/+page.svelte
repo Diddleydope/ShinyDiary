@@ -3,12 +3,14 @@
     import {onMount} from 'svelte';
     import { initializeApp } from "firebase/app";
     import { getAuth, initializeAuth } from "firebase/auth";
-    import { getFirestore } from "firebase/firestore";
-    import { getStorage } from "firebase/storage";
+    import { collection, getFirestore , query, orderBy, limit } from "firebase/firestore";
+    import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
+    import {doc, setDoc} from 'firebase/firestore';
     // TODO: Add SDKs for Firebase products that you want to use
     import { loggedIn } from './store';
     import Login from './login.svelte';
     import ActiveHunts from './ActiveHunts/+page.svelte';
+    import { set_building } from '__sveltekit/environment';
 
 
     // Your web app's Firebase configuration
