@@ -9,10 +9,9 @@
     export const attributeList:Attributes[] = [];
     export let currentGen = 5;
 
-    gen.subscribe((value) => {
+    /*.subscribe((value) => {
         currentGen = value;
-        console.log(currentGen)
-    })
+    })*/
     
     // Create a reference under which you want to list
     setTimeout(async () => {
@@ -28,25 +27,6 @@
             })
         ))
     );
-        
-    /*
-    attributeList.push(
-        ...(await Promise.all(
-            infoList.docs.map(async (doc) => {
-                const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
-                return infoObj;
-            })
-        ))
-    )*/
-        /*listAll(listReference).then((res) => {
-            res.items.forEach((listRef) => {
-                let pokeRef = ref(storage, listRef.fullPath);
-                getDownloadURL(pokeRef).then((url) => {
-                    const attributeObj = new Attributes(url);
-                    attributeList.push(attributeObj);
-                })
-            });
-        })*/
     }, 10);
 </script>
 

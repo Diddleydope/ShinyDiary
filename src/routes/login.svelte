@@ -60,6 +60,7 @@
 
         .loginContainer{
             text-align: center;
+            margin-top: 25vh;
         }
     
         .loginButtons{
