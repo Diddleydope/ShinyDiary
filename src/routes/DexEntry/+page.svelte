@@ -4,14 +4,31 @@
             this.imgURL = imgURL;
             this.name = name;
         }
-    }
+    }   
+</script>
 
-    export const attributeList:Attributes[] = [];
-    export let currentGen = 5;
+<script lang="ts">
+    /*THIS SCRIPT TAG IS NOT EVEN EXECUTING?*/
+    import { getDownloadURL, ref , listAll, list} from 'firebase/storage';
+    import {storage, db} from '../+page.svelte';
+    import { doc, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+    import 'firebase/firestore';
+    import Layout from '../+layout.svelte';
+    import { loggedIn } from '../store';
+    import { gen, attributeList} from '../store';
+    import { page } from '$app/stores';
+    import { onMount } from 'svelte';
+    import { preloadCode } from '$app/navigation';
+    
+    export let imageSource:string;
+    export let pokemonName:string; 
+    
+    let currentGen = 2;
 
-    /*.subscribe((value) => {
+    gen.subscribe((value:number) => {
         currentGen = value;
-    })*/
+    })
+
     
     // Create a reference under which you want to list
     setTimeout(async () => {
@@ -19,30 +36,23 @@
     const q = query(storageRef, orderBy("dexNr", "asc"));
     const querySnapshot = await getDocs(q);
 
-    attributeList.push(
-        ...(await Promise.all(
+
+    /* let temp = await Promise.all(
             querySnapshot.docs.map(async (doc) => {
                 const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
                 return infoObj;
-            })
-        ))
+            }));
+
+    $attributeList = [...$attributeList, temp];*/
+    $attributeList.push(
+    ...(await Promise.all(
+        querySnapshot.docs.map(async (doc) => {
+            const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
+            return infoObj;
+        })
+    ))
     );
     }, 10);
-</script>
-
-
-
-<script lang="ts">
-    import { getDownloadURL, ref , listAll, list} from 'firebase/storage';
-    import {storage, db} from '../+page.svelte';
-    import { doc, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
-    import 'firebase/firestore';
-    import Layout from '../+layout.svelte';
-    import { loggedIn } from '../store';
-    import { gen } from '../store';
-    
-    export let imageSource:string;
-    export let pokemonName:string;
 </script>
 
 

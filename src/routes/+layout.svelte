@@ -5,11 +5,12 @@
     import Pokeball from '$lib/pokeball.png';
     import { gen } from './store';
 
-/*
+
     function changeGen(genNr: number){
         gen.set(genNr);
+        console.log(genNr);
     }
-*/
+
 
 </script>
 
@@ -38,7 +39,7 @@
                 <a href="../Social">
                     <button class="navButtons">Social</button>
                 </a>
-<!--
+
                 <div class="dropdown">
 
                 <div class="dropdown">
@@ -55,7 +56,7 @@
                     </div>
                   </div> 
                 </div> 
--->
+
             </ul>
         </nav>
         <Login></Login>

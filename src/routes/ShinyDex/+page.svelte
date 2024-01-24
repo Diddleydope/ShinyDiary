@@ -1,22 +1,13 @@
 <script lang="ts">
     import DexEntry from '../DexEntry/+page.svelte';
-    import {attributeList} from '../DexEntry/+page.svelte';
+    import {attributeList} from '../store';
     import { loggedIn } from '../store';
-/*
-    console.log(attributeList[0].imgURL);
-    console.log(attributeList[1].imgURL);
-    console.log(attributeList[2].imgURL);
-    console.log(attributeList[3].imgURL);
-    console.log(attributeList[4].imgURL);
-    console.log(attributeList[5].imgURL);
-*/
-    
 </script>
 
 <div>
     {#if $loggedIn==true}
         <div class="gridContainer">
-        {#each attributeList as attribute}
+        {#each $attributeList as attribute}
             <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name}/>
         {/each}
         </div>

@@ -3,7 +3,7 @@
     import {onMount} from 'svelte';
     import { initializeApp } from "firebase/app";
     import { getAuth, initializeAuth } from "firebase/auth";
-    import { collection, getFirestore , query, orderBy, limit } from "firebase/firestore";
+    import { collection, getFirestore , query, orderBy, limit, getDocs, updateDoc } from "firebase/firestore";
     import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
     import {doc, setDoc} from 'firebase/firestore';
     // TODO: Add SDKs for Firebase products that you want to use
@@ -33,7 +33,12 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
-
+/*
+for(let i = 1; i<1000; i++){
+    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+    updateDoc(reference, {dexNr : i});
+}
+*/
 auth.onAuthStateChanged(user => {
     if(user){
         console.log("user has just logged in " , user);
