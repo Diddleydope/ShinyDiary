@@ -3,14 +3,6 @@
     import { loggedIn } from './store';
     import MainPage from './+page.svelte';
     import Pokeball from '$lib/pokeball.png';
-    import { gen } from './store';
-
-
-    function changeGen(genNr: number){
-        gen.set(genNr);
-        console.log(genNr);
-    }
-
 
 </script>
 
@@ -39,24 +31,6 @@
                 <a href="../Social">
                     <button class="navButtons">Social</button>
                 </a>
-
-                <div class="dropdown">
-
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
-                        <button on:click={() => changeGen(2)}>Generation 2</button>
-                        <button on:click={() => changeGen(3)}>Generation 3</button>
-                        <button on:click={() => changeGen(4)}>Generation 4</button>
-                        <button on:click={() => changeGen(5)}>Generation 5</button>
-                        <button on:click={() => changeGen(6)}>Generation 6</button>
-                        <button on:click={() => changeGen(7)}>Generation 7</button>
-                        <button on:click={() => changeGen(8)}>Generation 8</button>
-                        <button on:click={() => changeGen(9)}>Generation 9</button>
-                    </div>
-                  </div> 
-                </div> 
-
             </ul>
         </nav>
         <Login></Login>

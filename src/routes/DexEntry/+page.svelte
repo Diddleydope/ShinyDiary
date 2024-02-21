@@ -1,69 +1,45 @@
 <script context="module" lang="ts">
-    export class Attributes {
-        constructor(public imgURL:string, public name:string){
-            this.imgURL = imgURL;
-            this.name = name;
-        }
-    }   
+
+    export function closeModal(modal: any, overlay: any){
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
+    }
 </script>
 
 <script lang="ts">
     /*THIS SCRIPT TAG IS NOT EVEN EXECUTING?*/
-    import { getDownloadURL, ref , listAll, list} from 'firebase/storage';
-    import {storage, db} from '../+page.svelte';
-    import { doc, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
     import 'firebase/firestore';
-    import Layout from '../+layout.svelte';
     import { loggedIn } from '../store';
-    import { gen, attributeList} from '../store';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
-    import { preloadCode } from '$app/navigation';
+    import Modal from '../PokeDetails/+page.svelte';
+
+    let showModal = false;
+
     
     export let imageSource:string;
     export let pokemonName:string; 
-    
-    let currentGen = 2;
 
-    gen.subscribe((value:number) => {
-        currentGen = value;
-    })
-
-    
-    // Create a reference under which you want to list
-    setTimeout(async () => {
-    const storageRef = collection(db, 'Pokémon/Generation' + currentGen + '/Pokémon');
-    const q = query(storageRef, orderBy("dexNr", "asc"));
-    const querySnapshot = await getDocs(q);
-
-
-    /* let temp = await Promise.all(
-            querySnapshot.docs.map(async (doc) => {
-                const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
-                return infoObj;
-            }));
-
-    $attributeList = [...$attributeList, temp];*/
-    $attributeList.push(
-    ...(await Promise.all(
-        querySnapshot.docs.map(async (doc) => {
-            const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
-            return infoObj;
-        })
-    ))
-    );
-    }, 10);
 </script>
 
 
 
-<div class="enclosure">
+<button class="enclosure" on:click={() => (showModal = true)}>
     {#if $loggedIn==true}
-        <h2>{pokemonName}</h2>
+        <h2 id="pokename">{pokemonName}</h2>
         <img src={imageSource} alt="" class="pokeImages">
         <div class="secondEnclosure"></div>
     {/if}
-</div>
+</button>
+
+<Modal bind:showModal>
+	<h2 slot="header" id="modalheader">
+		Pokémon
+	</h2>
+
+	<ol class="definition-list">
+		Here is information on this Pokémon
+	</ol> 
+</Modal>
+
 
 <style>
    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
@@ -92,10 +68,25 @@
         scale: 1.25;
     }
 
-    h2{
+    #pokename{
         position:absolute;
-        right:1.5vw;
+        right:1.2vw;
+        top:0.5vh;
         font-family: 'Permanent Marker', cursive;
-        font-size: 130%;
+        font-size: 170%;
+    }
+
+    #modalheader{
+        font-family: 'Permanent Marker', cursive;
+        font-size: 170%;
+        position: absolute;
+        top:0vh;
+        left:0.5vw;
+    }
+
+    .definition-list{
+        position: absolute;
+        top:8vh;
+        left:-1vw;
     }
 </style>

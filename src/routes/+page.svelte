@@ -10,7 +10,7 @@
     import { loggedIn } from './store';
     import Login from './login.svelte';
     import ActiveHunts from './ActiveHunts/+page.svelte';
-    import { set_building } from '__sveltekit/environment';
+    //import { pokenames } from './pokemonnames.svelte';
 
 
     // Your web app's Firebase configuration
@@ -32,13 +32,31 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-
 /*
-for(let i = 1; i<1000; i++){
-    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
-    updateDoc(reference, {dexNr : i});
-}
-*/
+let files ;
+let pokenames = [""];
+
+
+const loadItems = async () => {
+    const response = await fetch('pokemon_names.txt');
+    files = await response.text();
+    pokenames = files.split('\n');
+    console.log(pokenames.length)
+    for(let i = 0; i<1025; i++){
+    let betternum = i+1
+    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + betternum);
+    updateDoc(reference, {name : pokenames[i]});
+    }
+};
+
+loadItems();
+/*
+console.log(pokenames)
+for(let i = 0; i<251; i++){
+    let reference = doc(db, 'Pokémon/Generation2/Pokémon/' + i+1);
+    updateDoc(reference, {name : pokenames[i]});
+}*/
+
 auth.onAuthStateChanged(user => {
     if(user){
         console.log("user has just logged in " , user);
@@ -49,7 +67,10 @@ auth.onAuthStateChanged(user => {
     }
 });
 
+
+
 </script>
+
 
 <div class="container">
 {#if $loggedIn==true}
