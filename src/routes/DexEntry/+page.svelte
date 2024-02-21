@@ -25,7 +25,9 @@
 <button class="enclosure" on:click={() => (showModal = true)}>
     {#if $loggedIn==true}
         <h2 id="pokename">{pokemonName}</h2>
-        <img src={imageSource} alt="" class="pokeImages">
+        <div id="pokeimagecontainer">
+            <img src={imageSource} alt="" class="pokeImages">
+        </div>
         <div class="secondEnclosure"></div>
     {/if}
 </button>
@@ -61,11 +63,11 @@
         scale: 105%;
     }
 
-    .pokeImages{
-        position: absolute;
-        left:0.5vw;
-        top:0vh;
-        scale: 1.25;
+
+    #pokeimagecontainer img{
+        position: relative;
+        height:100%;
+        width:100%;
     }
 
     #pokename{
@@ -88,5 +90,13 @@
         position: absolute;
         top:8vh;
         left:-1vw;
+    }
+
+    #pokeimagecontainer{
+        position: relative;
+        border-bottom:1px solid black;
+        height:7.5vw;
+        width:7.5vw;
+        bottom:3.5vw;
     }
 </style>
