@@ -1,40 +1,46 @@
 <script lang="ts" context="module">
     import Login from './login.svelte';
-    import { loggedIn } from './store';
+    import { loggedIn, showComponent, currentHuntScreen } from './store';
     import MainPage from './+page.svelte';
     import Pokeball from '$lib/pokeball.png';
+    import HuntingScreen from './HuntingScreen/+page.svelte';
 
 </script>
 
 {#if $loggedIn==true}
-    <slot></slot>
-    <header class="navHeader">
-        <nav class="navBar">
-            <img src={Pokeball} alt="" id="pokeball">
-            <ul class="navLinks">
-                <a href="../ActiveHunts">
-                    <button class="navButtons">ActiveHunts</button>
-                </a>
+    {#if $showComponent==true}
+        <HuntingScreen url={$currentHuntScreen[0]} name={$currentHuntScreen[1]}></HuntingScreen>
+    {:else}
+        <slot></slot>
+        <header class="navHeader">
+            <nav class="navBar">
+                <img src={Pokeball} alt="" id="pokeball">
+                <ul class="navLinks">
+                    <a href="../ActiveHunts">
+                        <button class="navButtons">ActiveHunts</button>
+                    </a>
 
-                <a href="../LatestShinies">
-                    <button class="navButtons">Latest Shinies</button>
-                </a>
+                    <a href="../LatestShinies">
+                        <button class="navButtons">Latest Shinies</button>
+                    </a>
 
-                <a href="../ShinyDex">
-                    <button class="navButtons">Shiny Dex</button>
-                </a>
+                    <a href="../ShinyDex">
+                        <button class="navButtons">Shiny Dex</button>
+                    </a>
 
-                <a href="../Settings">
-                    <button class="navButtons">Settings</button>
-                </a>
+                    <a href="../Settings">
+                        <button class="navButtons">Settings</button>
+                    </a>
 
-                <a href="../Social">
-                    <button class="navButtons">Social</button>
-                </a>
-            </ul>
-        </nav>
-        <Login></Login>
-    </header>
+                    <a href="../Social">
+                        <button class="navButtons">Social</button>
+                    </a>
+                </ul>
+            </nav>
+            <Login></Login>
+        </header>
+    {/if}
+
     
 {:else}
     <slot></slot>

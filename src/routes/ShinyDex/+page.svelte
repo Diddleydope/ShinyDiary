@@ -52,11 +52,9 @@
 <div>  
     {#if $loggedIn==true}
         <div class="gridContainer">
-            {#key $attributeList}
-                {#each $attributeList as attribute}
-                    <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name}/>
-                {/each}
-            {/key}
+            {#each $attributeList as attribute}
+                <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name}/>
+            {/each}
         </div>
         <div id="divi">
             <div class="dropdown">

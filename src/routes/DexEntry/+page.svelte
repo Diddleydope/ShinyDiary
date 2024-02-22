@@ -1,15 +1,7 @@
-<script context="module" lang="ts">
-
-    export function closeModal(modal: any, overlay: any){
-        modal.classList.remove("active");
-        overlay.classList.remove("active");
-    }
-</script>
-
 <script lang="ts">
     /*THIS SCRIPT TAG IS NOT EVEN EXECUTING?*/
     import 'firebase/firestore';
-    import { loggedIn } from '../store';
+    import { loggedIn, showComponent, currentHuntScreen } from '../store';
     import Modal from '../PokeDetails/+page.svelte';
 
     let showModal = false;
@@ -17,6 +9,14 @@
     
     export let imageSource:string;
     export let pokemonName:string; 
+
+    function newHunt(url:string, name:string){
+        console.log($showComponent)
+        $currentHuntScreen = [url, name];
+        showComponent.set(true);
+        console.log($showComponent)
+    }
+
 
 </script>
 
@@ -34,13 +34,20 @@
 
 <Modal bind:showModal>
 	<h2 slot="header" id="modalheader">
-		Pokémon
+		{pokemonName}
 	</h2>
 
-	<ol class="definition-list">
+    <div id="pokeimagecontainerModule">
+        <img src={imageSource} alt="" class="pokeImages">
+    </div>
+
+	<ol class="poke-info">
 		Here is information on this Pokémon
 	</ol> 
+
+    <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName))}>Start Hunt</button>
 </Modal>
+
 
 
 <style>
@@ -83,13 +90,13 @@
         font-size: 170%;
         position: absolute;
         top:0vh;
-        left:0.5vw;
+        left:1vw;
     }
 
-    .definition-list{
-        position: absolute;
-        top:8vh;
-        left:-1vw;
+    .poke-info{
+        position: relative;
+        top:4vh;
+        left:-3vw;
     }
 
     #pokeimagecontainer{
@@ -99,4 +106,36 @@
         width:7.5vw;
         bottom:3.5vw;
     }
+
+    #pokeimagecontainerModule{
+        position: relative;
+        border:1px solid black;
+        height:15vw;
+        width:15vw;
+        top:3.5vw;
+        border-radius: 10%;
+        background-color: whitesmoke;
+    }
+
+    #pokeimagecontainerModule img{
+        position: relative;
+        height:100%;
+        width:100%;
+    }
+
+    #startHuntButton{
+        position: absolute;
+        width:10vw;
+        height:5vw;
+        bottom:2vh;
+        right:2vw;
+        border-radius: 8%;
+        background-color: lightgreen;
+        transition: ease-in-out 0.1s;
+    }
+
+    #startHuntButton:hover{
+        background-color:seagreen;
+    }
+
 </style>

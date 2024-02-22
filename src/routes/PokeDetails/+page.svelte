@@ -1,5 +1,5 @@
 <script>
-import {closeModal} from '../DexEntry/+page.svelte'
+
 
 /**
  * @type {boolean}
@@ -27,7 +27,6 @@ $: if (dialog && showModal) dialog.showModal();
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->
 		<button id="closebutton" autofocus on:click={() => dialog.close()}>close modal</button>
-		<button id="starthunt">start hunt</button>
 	</div>
 </dialog>
 
@@ -73,10 +72,5 @@ $: if (dialog && showModal) dialog.showModal();
 		top:2vw;
 	}
 
-	#starthunt{
-		position: absolute;
-		bottom:2vh;
-		right: 2vw;
-	}
 
 </style>

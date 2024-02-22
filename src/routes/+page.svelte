@@ -1,14 +1,13 @@
 <script lang="ts" context="module">
     // Import the functions you need from the SDKs you need
-    import {onMount} from 'svelte';
     import { initializeApp } from "firebase/app";
-    import { getAuth, initializeAuth } from "firebase/auth";
+    import { getAuth } from "firebase/auth";
     import { collection, getFirestore , query, orderBy, limit, getDocs, updateDoc } from "firebase/firestore";
     import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
     import {doc, setDoc} from 'firebase/firestore';
     // TODO: Add SDKs for Firebase products that you want to use
-    import { loggedIn } from './store';
-    import Login from './login.svelte';
+    import { loggedIn, showComponent, currentHuntScreen } from './store';
+    import HuntingScreen from './HuntingScreen/+page.svelte'
     import ActiveHunts from './ActiveHunts/+page.svelte';
     //import { pokenames } from './pokemonnames.svelte';
 
@@ -68,7 +67,7 @@ auth.onAuthStateChanged(user => {
 });
 
 
-
+//
 </script>
 
 
