@@ -1,7 +1,10 @@
 <script lang="ts">
     /*THIS SCRIPT TAG IS NOT EVEN EXECUTING?*/
     import 'firebase/firestore';
+    import { updateDoc, doc } from "firebase/firestore";
     import { loggedIn, showComponent, currentHuntScreen } from '../store';
+    import { db } from '../+page.svelte';
+    import { currentGen } from '../ShinyDex/+page.svelte';
     import Modal from '../PokeDetails/+page.svelte';
 
     let showModal = false;
@@ -9,8 +12,12 @@
     
     export let imageSource:string;
     export let pokemonName:string; 
+    export let pokedexNumber:number;
 
-    function newHunt(url:string, name:string){
+
+    function newHunt(url:string, name:string, dexNr:number){ //HERE CHANGE "ACTIVE" ATTRIBUTE.
+        let reference = doc(db, 'Pokémon/Generation' + $currentGen + '/Pokémon/' + dexNr);
+        updateDoc(reference, {active: true});
         console.log($showComponent)
         $currentHuntScreen = [url, name];
         showComponent.set(true);
@@ -45,7 +52,7 @@
 		Here is information on this Pokémon
 	</ol> 
 
-    <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName))}>Start Hunt</button>
+    <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName, pokedexNumber))}>Start Hunt</button>
 </Modal>
 
 

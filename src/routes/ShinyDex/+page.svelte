@@ -1,22 +1,28 @@
 <script context="module", lang="ts">
-     export class Attributes {
-        constructor(public imgURL:string, public name:string){
+     export class DexMons {
+        constructor(public imgURL:string, public name:string, public active:boolean, public dexNr:number){
             this.imgURL = imgURL;
             this.name = name;
+            this.active = active;
+            this.dexNr = dexNr;
         }
     }
+    export const currentGen = persisted("currentGen", 5); 
 </script>
 
 <script lang="ts">
     import { collection, getDocs, orderBy, query } from 'firebase/firestore';
     import DexEntry from '../DexEntry/+page.svelte';
-    import { loggedIn, attributeList } from '../store';
+    import { loggedIn, pokemonList } from '../store';
     import { db } from '../+page.svelte';
     import { onMount } from 'svelte';
+    import { persisted } from 'svelte-persisted-store'
 
+    
 
     async function loadPokemon(generation:number){
             // Create a reference under which you want to list
+        $currentGen = generation;
         const storageRef = collection(db, 'Pokémon/Generation' + generation + '/Pokémon');
         const q = query(storageRef, orderBy("dexNr", "asc"));
         const querySnapshot = await getDocs(q);
@@ -29,22 +35,22 @@
                 }));
 
         $attributeList = [...$attributeList, temp];*/
-        $attributeList = [];
+        $pokemonList = [];
         
-        $attributeList.push(
+        $pokemonList.push(
         ...(await Promise.all(
             querySnapshot.docs.map(async (doc) => {
-                const infoObj = new Attributes(doc.data().URL_Normal, doc.data().name);
+                const infoObj = new DexMons(doc.data().URL_Normal, doc.data().name, doc.data().active, doc.data().dexNr);
                 return infoObj;
             })
         ))
         );
 
-        $attributeList = $attributeList;
+        $pokemonList = $pokemonList;
     }
 
     onMount(async () => {
-		loadPokemon(5);
+		loadPokemon($currentGen);
 	});
     
 </script>
@@ -52,8 +58,9 @@
 <div>  
     {#if $loggedIn==true}
         <div class="gridContainer">
-            {#each $attributeList as attribute}
-                <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name}/>
+            {#each $pokemonList as attribute}
+                <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
+                pokedexNumber={attribute.dexNr}/>
             {/each}
         </div>
         <div id="divi">

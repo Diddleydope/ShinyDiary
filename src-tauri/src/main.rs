@@ -1,3 +1,4 @@
+/*
 use tauri::Manager;
 
 // the payload type must implement `Serialize` and `Clone`.
@@ -41,6 +42,19 @@ fn main() {
     Ok(())
 })
     // This is where you pass in your commands
+    .run(tauri::generate_context!())
+    .expect("failed to run app");
+}
+*/
+#[tauri::command]
+fn my_custom_command() {
+  println!("I was invoked from JS!");
+}
+
+fn main() {
+  tauri::Builder::default()
+    // This is where you pass in your commands
+    .invoke_handler(tauri::generate_handler![my_custom_command])
     .run(tauri::generate_context!())
     .expect("failed to run app");
 }

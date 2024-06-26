@@ -54,7 +54,13 @@ console.log(pokenames)
 for(let i = 0; i<251; i++){
     let reference = doc(db, 'Pokémon/Generation2/Pokémon/' + i+1);
     updateDoc(reference, {name : pokenames[i]});
-}*/
+}
+
+for(let i = 1; i<1000; i++){
+    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+    updateDoc(reference, {active: false});
+ }
+*/
 
 auth.onAuthStateChanged(user => {
     if(user){
