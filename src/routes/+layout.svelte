@@ -9,7 +9,7 @@
 
 {#if $loggedIn==true}
     {#if $showComponent==true}
-        <HuntingScreen url={$currentHuntScreen[0]} name={$currentHuntScreen[1]}></HuntingScreen>
+        <HuntingScreen></HuntingScreen>
     {:else}
         <slot></slot>
         <header class="navHeader">
@@ -20,8 +20,8 @@
                         <button class="navButtons">ActiveHunts</button>
                     </a>
 
-                    <a href="../LatestShinies">
-                        <button class="navButtons">Latest Shinies</button>
+                    <a href="../Collection">
+                        <button class="navButtons">Collection</button>
                     </a>
 
                     <a href="../ShinyDex">

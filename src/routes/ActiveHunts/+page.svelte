@@ -5,6 +5,7 @@
     import { db } from '../+page.svelte';
     import { onMount } from 'svelte';
     import DexEntry from '../DexEntry/+page.svelte';
+    import {shinyCounter} from '../store';
 
 </script>
 
@@ -13,7 +14,7 @@
         {#each $pokemonList as attribute}
             {#if attribute.active == true}
                 <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
-                pokedexNumber={attribute.dexNr}/>
+                pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active}/>
             {/if}
         {/each}
     </div>

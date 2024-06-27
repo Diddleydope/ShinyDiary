@@ -1,21 +1,22 @@
+
 <script lang="ts">
-    import {showComponent, counter} from '../store'
+    import {showComponent, shinyCounter, currentHuntScreen} from '../store'
     import { onMount } from 'svelte'
     import { register, unregister } from '@tauri-apps/api/globalShortcut';
-    import { persisted } from 'svelte-persisted-store'
+    import { doc, updateDoc } from 'firebase/firestore';
+    import { db } from '../+page.svelte';
+    import { currentGen } from '../ShinyDex/+page.svelte';
 
-    export let url:string;
-    export let name:string;
 
     // First param `preferences` is the local storage key.
     // Second param is the initial value.
-    const preferences = persisted(name, 0);    
-
+       
+    //HAVE AN ARRAY OF PERSISTED WITH INDEX AS DEX NR AND COUNTERS IN THERE, OR FIND ANOTHER SOLULU
     onMount(() => {
         const setupListener = async () => {
             await register('SPACE', () => {
             console.log('Shortcut triggered');
-            $preferences++;
+            $shinyCounter[$currentHuntScreen[2]] = $shinyCounter[$currentHuntScreen[2]]+ 1;
             });
         };
         setupListener();
@@ -24,6 +25,13 @@
 
     async function closeHuntingScreen(){
         await unregister('SPACE');
+        showComponent.set(false);
+    }
+
+    async function endHunt(dexnr: string | number){
+        await unregister('SPACE');
+        let reference = doc(db, 'Pokémon/Generation' + $currentGen + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: false});
         showComponent.set(false);
     }
 /*
@@ -74,11 +82,12 @@
 
 <div class="container">
     <div class="imgcontainer">
-        <img src={url} alt="" id="activeHuntImg">
+        <img src={$currentHuntScreen[0]} alt="" id="activeHuntImg">
     </div>
-    <div class="pokename">{name}</div>
-    <div class="pokename" id="count">{$preferences}</div>
+    <div class="pokename">{$currentHuntScreen[1]}</div>
+    <div class="pokename" id="count">{$shinyCounter[$currentHuntScreen[2]]}</div>
     <button id="closebtn" on:click={closeHuntingScreen}>Close</button>
+    <button id="endhunt" on:click={() => endHunt($currentHuntScreen[2])}>EndHunt</button>
 </div>
 
 <style>
@@ -129,6 +138,17 @@
         position: absolute;
         top:5vh;
         right:5vw;
+        border-radius: 20%;
+        border: 1px solid black;
+        height:4vh;
+        width:6vw;
+    }
+
+    #endhunt{
+        background-color: gray;
+        position: absolute;
+        top:5vh;
+        left:5vw;
         border-radius: 20%;
         border: 1px solid black;
         height:4vh;
