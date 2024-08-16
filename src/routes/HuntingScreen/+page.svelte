@@ -6,16 +6,19 @@
     import { doc, updateDoc } from 'firebase/firestore';
     import { db } from '../+page.svelte';
     import { currentGen } from '../ShinyDex/+page.svelte';
+    import { loggedIn,
+            generation2, generation3, generation4, generation5, generation6, generation7,
+            generation8, generation9 } from '../store';
 
 
     // First param `preferences` is the local storage key.
     // Second param is the initial value.
        
-    //HAVE AN ARRAY OF PERSISTED WITH INDEX AS DEX NR AND COUNTERS IN THERE, OR FIND ANOTHER SOLULU
     onMount(() => {
         const setupListener = async () => {
             await register('SPACE', () => {
             console.log('Shortcut triggered');
+            console.log($currentHuntScreen[2], "this is it");
             $shinyCounter[$currentHuntScreen[2]] = $shinyCounter[$currentHuntScreen[2]]+ 1;
             });
         };
@@ -28,11 +31,43 @@
         showComponent.set(false);
     }
 
-    async function endHunt(dexnr: string | number){
+    async function endHunt(dexnr: number){
         await unregister('SPACE');
-        let reference = doc(db, 'Pokémon/Generation' + $currentGen + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: false});
         showComponent.set(false);
+        for(let i = 2; i<=9; i++){
+            let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
+            updateDoc(reference, {active: false});
+            updateDoc(reference, {counter: 0});
+        }
+
+        console.log($generation5[dexnr].uniqueCounter)
+        if($generation2.length>1){
+            $generation2[dexnr].active = false;
+        }
+        if($generation3.length>1){
+            $generation3[dexnr-1].active = false;
+        }
+        if($generation4.length>1){
+            $generation4[dexnr-1].active = false;
+        }
+        if($generation5.length>1){
+            $generation5[dexnr-1].active = false;
+        }
+        if($generation6.length>1){
+            $generation6[dexnr-1].active = false;
+        }
+        if($generation7.length>1){
+            $generation7[dexnr-1].active = false;
+        }
+        if($generation8.length>1){
+            $generation8[dexnr-1].active = false;
+        }
+        if($generation9.length>1){
+            $generation9[dexnr-1].active = false;
+        }
+
+        $shinyCounter[dexnr] = 0;
+        
     }
 /*
     const webview = new WebviewWindow('window');

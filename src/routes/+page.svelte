@@ -6,9 +6,11 @@
     import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
     import {doc, setDoc} from 'firebase/firestore';
     // TODO: Add SDKs for Firebase products that you want to use
-    import { loggedIn, showComponent, currentHuntScreen } from './store';
+    import { loggedIn, showComponent, currentHuntScreen, generation2, generation3, generation4, generation5,
+                generation6, generation7, generation8, generation9 } from './store';
     import HuntingScreen from './HuntingScreen/+page.svelte'
     import ActiveHunts from './ActiveHunts/+page.svelte';
+    import { currentGenLength } from './ShinyDex/+page.svelte';
     //import { pokenames } from './pokemonnames.svelte';
 
 
@@ -56,11 +58,13 @@ for(let i = 0; i<251; i++){
     updateDoc(reference, {name : pokenames[i]});
 }
 
-for(let i = 1; i<1000; i++){
-    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+for(let i = 1; i<251; i++){// do this for all gens first
+    let reference = doc(db, 'Pokémon/Generation2/Pokémon/' + i);
     updateDoc(reference, {active: false});
  }
 */
+
+
 
 auth.onAuthStateChanged(user => {
     if(user){
@@ -71,6 +75,7 @@ auth.onAuthStateChanged(user => {
         loggedIn.set(false);
     }
 });
+
 
 
 //

@@ -1,9 +1,11 @@
 <script lang="ts">
     import 'firebase/firestore';
     import { updateDoc, doc } from "firebase/firestore";
-    import { loggedIn, showComponent, currentHuntScreen, shinyCounter } from '../store';
+    import { loggedIn, showComponent, currentHuntScreen, shinyCounter,
+            generation2, generation3, generation4, generation5, generation6, generation7,
+            generation8, generation9 } from '../store';
     import { db } from '../+page.svelte';
-    import { currentGen } from '../ShinyDex/+page.svelte';
+    import { currentGen, DexMons, currentGenLength } from '../ShinyDex/+page.svelte';
     import Modal from '../PokeDetails/+page.svelte';
 
     let showModal = false;
@@ -15,13 +17,14 @@
     export let pokemonStatus:boolean;
 
 
+
     function newHunt(url:string, name:string, dexNr:number){ //HERE CHANGE "ACTIVE" ATTRIBUTE.
-        let reference = doc(db, 'Pokémon/Generation' + $currentGen + '/Pokémon/' + dexNr);
-        updateDoc(reference, {active: true});
         console.log($showComponent)
         $currentHuntScreen = [url, name, dexNr];
         showComponent.set(true);
-        console.log($showComponent)
+        console.log($showComponent);
+        updateDb(true, dexNr);//NEED TO UPDATE IN ALL ARRAYS !!
+        updateArrays(true, dexNr);
     }
 
     function continueHunt(url:string, name:string, dexNr:number){
@@ -29,6 +32,39 @@
         showComponent.set(true);
     }
 
+    export function updateArrays(val:boolean, dexnr:number){
+        if($generation2.length>1){
+            $generation2[dexnr].active = (val);
+        }
+        if($generation3.length>1){
+            $generation3[dexnr-1].active = (val);
+        }
+        if($generation4.length>1){
+            $generation4[dexnr-1].active = (val);
+        }
+        if($generation5.length>1){
+            $generation5[dexnr-1].active = (val);
+        }
+        if($generation6.length>1){
+            $generation6[dexnr-1].active = (val);
+        }
+        if($generation7.length>1){
+            $generation7[dexnr-1].active = (val);
+        }
+        if($generation8.length>1){
+            $generation8[dexnr-1].active = (val);
+        }
+        if($generation9.length>1){
+            $generation9[dexnr-1].active = (val);
+        }
+    }
+
+    export function updateDb(val:boolean, dexnr:number){
+        for(let i = 2; i<=9; i++){
+            let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
+            updateDoc(reference, {active: val})
+        }
+}
 
 </script>
 
