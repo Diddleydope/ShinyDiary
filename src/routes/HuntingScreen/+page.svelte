@@ -18,7 +18,7 @@
         const setupListener = async () => {
             await register('SPACE', () => {
             console.log('Shortcut triggered');
-            console.log($currentHuntScreen[2], "this is it");
+            //console.log($shinyCounter[$currentHuntScreen[2]],"thisshouldbethecounter");
             $shinyCounter[$currentHuntScreen[2]] = $shinyCounter[$currentHuntScreen[2]]+ 1;
             });
         };
@@ -34,42 +34,143 @@
     async function endHunt(dexnr: number){
         await unregister('SPACE');
         showComponent.set(false);
-        for(let i = 2; i<=9; i++){
+        let gencheck;
+        if(dexnr<=252){
+            gencheck = 2;
+        }
+        else if(dexnr<=387){
+            gencheck = 3;
+        }
+        else if(dexnr<=494){
+            gencheck = 4;
+        }
+        else if(dexnr<=650){
+            gencheck = 5;
+        }
+        else if(dexnr<=722){
+            gencheck = 6;
+        }
+        else if(dexnr<=810){
+            gencheck = 7;
+        }
+        else if(dexnr<=906){
+            gencheck = 8;
+        }
+        else{
+            gencheck = 9;
+        }
+        for(let i = 2; i<=gencheck; i++){
             let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
             updateDoc(reference, {active: false});
             updateDoc(reference, {counter: 0});
         }
 
-        console.log($generation5[dexnr].uniqueCounter)
-        if($generation2.length>1){
-            $generation2[dexnr].active = false;
+        if($generation2.length>1 && dexnr<=252){
+            $generation2[dexnr-1].active = false;
         }
-        if($generation3.length>1){
+        if($generation3.length>1 && dexnr<=387){
             $generation3[dexnr-1].active = false;
         }
-        if($generation4.length>1){
+        if($generation4.length>1 && dexnr<=494){
             $generation4[dexnr-1].active = false;
         }
-        if($generation5.length>1){
+        if($generation5.length>1 && dexnr<=650){
             $generation5[dexnr-1].active = false;
         }
-        if($generation6.length>1){
+        if($generation6.length>1 && dexnr<=722){
             $generation6[dexnr-1].active = false;
         }
-        if($generation7.length>1){
+        if($generation7.length>1 && dexnr<=810){
             $generation7[dexnr-1].active = false;
         }
-        if($generation8.length>1){
+        if($generation8.length>1 && dexnr<=906){
             $generation8[dexnr-1].active = false;
         }
-        if($generation9.length>1){
+        if($generation9.length>1 && dexnr<=1000){
             $generation9[dexnr-1].active = false;
         }
 
         $shinyCounter[dexnr] = 0;
         
     }
+
+    async function completeHunt(dexnr:number){ //same w endHunt, then ur done
+        await unregister('SPACE');
+        showComponent.set(false);
+        let gencheck;
+        if(dexnr<=252){
+            gencheck = 2;
+        }
+        else if(dexnr<=387){
+            gencheck = 3;
+        }
+        else if(dexnr<=494){
+            gencheck = 4;
+        }
+        else if(dexnr<=650){
+            gencheck = 5;
+        }
+        else if(dexnr<=722){
+            gencheck = 6;
+        }
+        else if(dexnr<=810){
+            gencheck = 7;
+        }
+        else if(dexnr<=906){
+            gencheck = 8;
+        }
+        else{
+            gencheck = 9;
+        }
+        console.log(gencheck, "check var here");
+        for(let i = 2; i<=gencheck; i++){
+            console.log("counter of times exec")
+            let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
+            updateDoc(reference, {completedStatus: true});
+            updateDoc(reference, {active: false});
+            updateDoc(reference, {counter: 0});
+        }
+
+        if($generation2.length>1 && dexnr<=252){
+            $generation2[dexnr-1].completedStatus = true;
+            $generation2[dexnr-1].active = false;
+        }
+        if($generation3.length>1 && dexnr<=387){
+            $generation3[dexnr-1].completedStatus = true;
+            $generation3[dexnr-1].active = false;
+        }
+        if($generation4.length>1 && dexnr<=494){
+            $generation4[dexnr-1].completedStatus = true;
+            $generation4[dexnr-1].active = false;
+        }
+        if($generation5.length>1 && dexnr<=650){
+            $generation5[dexnr-1].completedStatus = true;
+            $generation5[dexnr-1].active = false;
+        }
+        if($generation6.length>1 && dexnr<=722){
+            $generation6[dexnr-1].completedStatus = true;
+            $generation6[dexnr-1].active = false;
+        }
+        if($generation7.length>1 && dexnr<=810){
+            $generation7[dexnr-1].completedStatus = true;
+            $generation7[dexnr-1].active = false;
+        }
+        if($generation8.length>1 && dexnr<=906){
+            $generation8[dexnr-1].completedStatus = true;
+            $generation8[dexnr-1].active = false;
+        }
+        if($generation9.length>1 && dexnr<=1000){
+            $generation9[dexnr-1].completedStatus = true;
+            $generation9[dexnr-1].active = false;
+        }
+
+        //$shinyCounter[dexnr] = 0;
+    }
 /*
+    function completeHunt(){
+
+    }
+
     const webview = new WebviewWindow('window');
 
     onMount(() => {
@@ -122,7 +223,8 @@
     <div class="pokename">{$currentHuntScreen[1]}</div>
     <div class="pokename" id="count">{$shinyCounter[$currentHuntScreen[2]]}</div>
     <button id="closebtn" on:click={closeHuntingScreen}>Close</button>
-    <button id="endhunt" on:click={() => endHunt($currentHuntScreen[2])}>EndHunt</button>
+    <button id="endhunt" on:click={() => endHunt($currentHuntScreen[2])}>End Hunt</button>
+    <button id="completehunt" on:click={() => completeHunt($currentHuntScreen[2])}>Complete Hunt</button>
 </div>
 
 <style>
@@ -183,6 +285,17 @@
         background-color: gray;
         position: absolute;
         top:5vh;
+        left:5vw;
+        border-radius: 20%;
+        border: 1px solid black;
+        height:4vh;
+        width:6vw;
+    }
+
+    #completehunt{
+        background-color: gray;
+        position: absolute;
+        bottom:5vh;
         left:5vw;
         border-radius: 20%;
         border: 1px solid black;

@@ -1,6 +1,5 @@
-- START IMPLEMENTING STARTING HUNT MECHANIC
-- INSTEAD OF REROUTING, OPEN AN INSTANCE OF THE COMPONENT WITH ITS ATTRIBUTES
-
+- fix also showing collection in shiny dex
+- fix complete hunt not working for over gen 2
 
 
 BEFORE ANY KIND OF PUBLISHING:  

@@ -57,10 +57,18 @@ for(let i = 0; i<251; i++){
     let reference = doc(db, 'Pokémon/Generation2/Pokémon/' + i+1);
     updateDoc(reference, {name : pokenames[i]});
 }
+gen 2: 252
+gen 3: 387
+Gen 4: 494
+Gen 5: 650
+Gen 6: 722
+Gen 7: 810
+Gen 8: 906
+Gen 9: 1000
 
-for(let i = 1; i<251; i++){// do this for all gens first
-    let reference = doc(db, 'Pokémon/Generation2/Pokémon/' + i);
-    updateDoc(reference, {active: false});
+for(let i = 1; i<1000; i++){// do this for all gens first
+    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+    updateDoc(reference, {completedStatus: false});
  }
 */
 

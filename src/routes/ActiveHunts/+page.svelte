@@ -14,7 +14,8 @@
         {#each $pokemonList as attribute}
             {#if attribute.active == true}
                 <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
-                pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active}/>
+                pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active} 
+                completedStatus={attribute.completedStatus}/>
             {/if}
         {/each}
     </div>

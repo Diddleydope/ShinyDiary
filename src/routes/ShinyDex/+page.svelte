@@ -1,14 +1,15 @@
 <script context="module", lang="ts">
      export class DexMons {
         constructor(public imgURL:string, public name:string, public active:boolean, public dexNr:number, 
-                    public shinyURL:string, public uniqueCounter:number){
+                    public shinyURL:string, public uniqueCounter:number, public completedStatus:boolean){
             this.imgURL = imgURL;
             this.name = name;
             this.active = active;
             this.dexNr = dexNr;
             this.shinyURL = shinyURL;
             this.uniqueCounter = uniqueCounter;
-        }
+            this.completedStatus = completedStatus;
+            }
     }
     export const currentGen = persisted("currentGen", 5); 
     export const currentGenLength = persisted("currentGenLength", 0);
@@ -53,7 +54,7 @@
                 querySnapshot.docs.map(async (doc) => {
                     const infoObj = new DexMons(doc.data().URL_Normal, doc.data().name, 
                                                 doc.data().active, doc.data().dexNr, doc.data().URL_Shiny,
-                                                $shinyCounter[doc.data().dexNr]);
+                                                $shinyCounter[doc.data().dexNr], doc.data().completedStatus);
                     return infoObj;
                 })
             ))
@@ -152,7 +153,8 @@
         <div class="gridContainer">
             {#each $pokemonList as attribute}
                 <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
-                pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active}/>
+                pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active} 
+                completedStatus={attribute.completedStatus} />
             {/each}
         </div>
         <div id="divi">

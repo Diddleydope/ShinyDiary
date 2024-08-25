@@ -15,11 +15,13 @@
     export let pokemonName:string; 
     export let pokedexNumber:number;
     export let pokemonStatus:boolean;
+    export let completedStatus:boolean;
 
 
 
     function newHunt(url:string, name:string, dexNr:number){ //HERE CHANGE "ACTIVE" ATTRIBUTE.
         console.log($showComponent)
+        $shinyCounter[dexNr] = 0;
         $currentHuntScreen = [url, name, dexNr];
         showComponent.set(true);
         console.log($showComponent);
@@ -31,56 +33,104 @@
         $currentHuntScreen = [url, name, dexNr];
         showComponent.set(true);
     }
+    /*
+    gen 2: 252
+    gen 3: 387
+    Gen 4: 494
+    Gen 5: 650
+    Gen 6: 722
+    Gen 7: 810
+    Gen 8: 906
+    Gen 9: 1000
+*/
+    export function updateArrays(val:boolean, dexnr:number){//problem is trying to access gens where pokemon dont exist
+        console.log(val, "hihi")
+        if($generation2.length>1&&dexnr<=252){
+            $generation2[dexnr-1].active = val;
+        }
+        if($generation3.length>1 && dexnr<=387){
+            $generation3[dexnr-1].active = val;
+        }
+        if($generation4.length>1 && dexnr<=494){
+            $generation4[dexnr-1].active = val;
+        }
+        if($generation5.length>1 && dexnr<=650){
+            $generation5[dexnr-1].active = val;
+        }
+        if($generation6.length>1 && dexnr<=722){
+            $generation6[dexnr-1].active = val;
+        }
+        if($generation7.length>1 && dexnr<=810){
+            $generation7[dexnr-1].active = val;
+        }
+        if($generation8.length>1 && dexnr<=906){
+            $generation8[dexnr-1].active = val;
+        }
+        $generation9[dexnr-1].active = val;
 
-    export function updateArrays(val:boolean, dexnr:number){
-        if($generation2.length>1){
-            $generation2[dexnr].active = (val);
-        }
-        if($generation3.length>1){
-            $generation3[dexnr-1].active = (val);
-        }
-        if($generation4.length>1){
-            $generation4[dexnr-1].active = (val);
-        }
-        if($generation5.length>1){
-            $generation5[dexnr-1].active = (val);
-        }
-        if($generation6.length>1){
-            $generation6[dexnr-1].active = (val);
-        }
-        if($generation7.length>1){
-            $generation7[dexnr-1].active = (val);
-        }
-        if($generation8.length>1){
-            $generation8[dexnr-1].active = (val);
-        }
-        if($generation9.length>1){
-            $generation9[dexnr-1].active = (val);
-        }
     }
 
-    export function updateDb(val:boolean, dexnr:number){
-        for(let i = 2; i<=9; i++){
-            let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
-            updateDoc(reference, {active: val})
+    export function updateDb(val:boolean, dexnr:number){//problem is trying to access gens where pokemon dont exist
+        if(dexnr<252){
+            let reference = doc(db, 'Pokémon/Generation' + 2 + '/Pokémon/' + dexnr);
+            updateDoc(reference, {active: val});
         }
+        if(dexnr<=387){
+            let reference = doc(db, 'Pokémon/Generation' + 3 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+        if(dexnr<=494){
+            let reference = doc(db, 'Pokémon/Generation' + 4 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+        if(dexnr<=650){
+            let reference = doc(db, 'Pokémon/Generation' + 5 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+        if(dexnr<=722){
+            let reference = doc(db, 'Pokémon/Generation' + 6 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+        if(dexnr<=810){
+            let reference = doc(db, 'Pokémon/Generation' + 7 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+        if(dexnr<=906){
+            let reference = doc(db, 'Pokémon/Generation' + 8 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        }
+   
+        let reference = doc(db, 'Pokémon/Generation' + 9 + '/Pokémon/' + dexnr);
+        updateDoc(reference, {active: val});
+        
+        
 }
 
 </script>
 
 
-{#if pokemonStatus==false}
-    <button class="enclosure" on:click={() => (showModal = true)}>
+{#if pokemonStatus==true}
+    <button class="enclosureActive" on:click={() => (showModal = true)}>
         {#if $loggedIn==true}
             <h2 id="pokename">{pokemonName}</h2>
             <div id="pokeimagecontainer">
                 <img src={imageSource} alt="" class="pokeImages">
             </div>
-            <div class="secondEnclosure"></div>
+            <div class="counter">{$shinyCounter[pokedexNumber]}</div>
+        {/if}
+    </button>
+{:else if completedStatus==true}
+    <button class="enclosureCompleted" on:click={() => (showModal = true)}>
+        {#if $loggedIn==true}
+            <h2 id="pokename">{pokemonName}</h2>
+            <div id="pokeimagecontainer">
+                <img src={imageSource} alt="" class="pokeImages">
+            </div>
+            <div class="counter">Found!</div>
         {/if}
     </button>
 {:else}
-    <button class="enclosureActive" on:click={() => (showModal = true)}>
+    <button class="enclosure" on:click={() => (showModal = true)}>
         {#if $loggedIn==true}
             <h2 id="pokename">{pokemonName}</h2>
             <div id="pokeimagecontainer">
@@ -135,6 +185,22 @@
         left:1.5vw;
         transition: ease-out 0.25s;
         border-radius: 1.5rem;
+    }
+    .enclosureCompleted{
+        position: relative;
+        background-color:lightgreen;
+        height: 23vh;
+        width: 17vw;
+        top:10vh;
+        left:1.5vw;
+        transition: ease-out 0.25s;
+        border-radius: 1.5rem;
+    }
+
+    .enclosureCompleted:hover{
+        background-color:green;
+        box-shadow: 0.5vh 0.5vw;
+        scale: 105%;
     }
     
     .enclosureActive:hover{
