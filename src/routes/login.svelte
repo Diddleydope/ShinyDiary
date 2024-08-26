@@ -105,11 +105,23 @@
 
         #signOutButton{
             position:absolute;
-            right:6vw;
-            top:2.3vw;
-            font-family: 'Lobster', cursive;
-            font-size: large;
+            right:0vw;
+            top:0vh;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 130%;
             background-color: transparent;
+            height:8vh;
+            width:20vw;
+            transition: ease-out 0.25s;
+            background-color:transparent;
+            border-color: black;
+            border-style: solid;
+            border-width: 0.05vw;
+        }
+
+        #signOutButton:hover{
+            background-color: crimson;
+            scale:1.05
         }
         
     </style>

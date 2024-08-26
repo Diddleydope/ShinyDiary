@@ -68,21 +68,24 @@
 
     .navButtons{
         position: relative;
-        width: 9vw;
-        margin-right: 2vw;
-        left:23vw;
-        height: 4vh;
-        top:1.5vh;
-        background-color: transparent;
-        font-family: 'Lobster', cursive;
-        font-size: large;
-        border: 2px;
+        padding: 0;
+        margin:0;
+        width: 12vw;
+        left:15.55vw;
+        height: 8vh;
+        top:-1.8vh;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 130%;
+        transition: ease-out 0.25s;
+        background-color:transparent;
+        border-color: black;
         border-style: solid;
-        border-color: ghostwhite;
+        border-width: 0.05vw;
     }
 
     .navButtons:hover{
-        border-bottom-color: black;
+        background-color:rosybrown;
+        scale:1.05;
     }
 
     #pokeball{

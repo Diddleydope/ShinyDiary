@@ -19,11 +19,12 @@
 <style>
     .gridContainer{
         position: relative;
-        top:5vh;
+        top:0vh;
         display: grid;
         justify-content: center;
         align-items: center;
-        grid-template-columns: repeat(5, 1fr);
-        row-gap: 3vh;
+        right:1.05vw;
+        grid-template-columns: repeat(5, 0.5fr);
+        row-gap: 2vh;
     }
 </style>

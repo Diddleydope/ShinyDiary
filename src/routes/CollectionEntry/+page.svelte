@@ -51,8 +51,8 @@ let showModal = false;
     .enclosureCompleted{
         position: relative;
         background-color:lightgreen;
-        height: 23vh;
-        width: 17vw;
+        height: 25vh;
+        width: 19vw;
         top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;

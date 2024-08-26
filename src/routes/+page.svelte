@@ -10,7 +10,8 @@
                 generation6, generation7, generation8, generation9 } from './store';
     import HuntingScreen from './HuntingScreen/+page.svelte'
     import ActiveHunts from './ActiveHunts/+page.svelte';
-    import { currentGenLength } from './ShinyDex/+page.svelte';
+
+
     //import { pokenames } from './pokemonnames.svelte';
 
 
@@ -66,11 +67,14 @@ Gen 7: 810
 Gen 8: 906
 Gen 9: 1000
 
-for(let i = 1; i<1000; i++){// do this for all gens first
-    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+for(let i = 1; i<906; i++){// do this for all gens first
+    let reference = doc(db, 'Pokémon/Generation8/Pokémon/' + i);
     updateDoc(reference, {completedStatus: false});
+    updateDoc(reference, {active: false});
  }
-*/
+  */
+
+
 
 
 

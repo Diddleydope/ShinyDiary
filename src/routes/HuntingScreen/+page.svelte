@@ -1,6 +1,6 @@
 
 <script lang="ts">
-    import {showComponent, shinyCounter, currentHuntScreen} from '../store'
+    import {showComponent, shinyCounter, currentHuntScreen, incrementAmount, incrementKeybind} from '../store'
     import { onMount } from 'svelte'
     import { register, unregister } from '@tauri-apps/api/globalShortcut';
     import { doc, updateDoc } from 'firebase/firestore';
@@ -9,6 +9,7 @@
     import { loggedIn,
             generation2, generation3, generation4, generation5, generation6, generation7,
             generation8, generation9 } from '../store';
+    import { unregisterAll } from '@tauri-apps/api/globalShortcut';
 
 
     // First param `preferences` is the local storage key.
@@ -16,10 +17,10 @@
        
     onMount(() => {
         const setupListener = async () => {
-            await register('SPACE', () => {
+            await register($incrementKeybind, () => {
             console.log('Shortcut triggered');
             //console.log($shinyCounter[$currentHuntScreen[2]],"thisshouldbethecounter");
-            $shinyCounter[$currentHuntScreen[2]] = $shinyCounter[$currentHuntScreen[2]]+ 1;
+            $shinyCounter[$currentHuntScreen[2]] = $shinyCounter[$currentHuntScreen[2]]+ $incrementAmount;
             });
         };
         setupListener();
@@ -27,12 +28,12 @@
 
 
     async function closeHuntingScreen(){
-        await unregister('SPACE');
+        await unregister($incrementKeybind);
         showComponent.set(false);
     }
 
     async function endHunt(dexnr: number){
-        await unregister('SPACE');
+        await unregister($incrementKeybind);
         showComponent.set(false);
         let gencheck;
         if(dexnr<=252){
@@ -95,7 +96,7 @@
     }
 
     async function completeHunt(dexnr:number){ //same w endHunt, then ur done
-        await unregister('SPACE');
+        await unregister($incrementKeybind);
         showComponent.set(false);
         let gencheck;
         if(dexnr<=252){
@@ -167,6 +168,11 @@
         //$shinyCounter[dexnr] = 0;
     }
 /*
+    onMount(async () => {
+        await unregisterAll();
+	});
+
+
     function completeHunt(){
 
     }

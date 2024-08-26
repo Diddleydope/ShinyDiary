@@ -130,6 +130,7 @@
     }   
     onMount(async () => {
         /*
+        
         $generation2 = [];
         $generation3 = [];
         $generation4 = [];
@@ -138,6 +139,10 @@
         $generation7 = [];
         $generation8 = [];
         $generation9 = [];
+         
+        for(let i = 0; i<$shinyCounter.length; i++){
+            $shinyCounter[i] = 0;
+        }
         */
         console.log($currentGen);
 		loadPokemon($currentGen, $currentGenLength);
@@ -157,21 +162,18 @@
                 completedStatus={attribute.completedStatus} />
             {/each}
         </div>
-        <div id="divi">
-            <div class="dropdown">
-                <button class="dropbtn">Generations</button>
-                    <div class="dropdown-content">
-                        <button on:click={() => loadPokemon(2, $generation2.length)}>Generation 2</button>
-                        <button on:click={() => loadPokemon(3, $generation3.length)}>Generation 3</button>
-                        <button on:click={() => loadPokemon(4, $generation4.length)}>Generation 4</button>
-                        <button on:click={() => loadPokemon(5, $generation5.length)}>Generation 5</button>
-                        <button on:click={() => loadPokemon(6, $generation6.length)}>Generation 6</button>
-                        <button on:click={() => loadPokemon(7, $generation7.length)}>Generation 7</button>
-                        <button on:click={() => loadPokemon(8, $generation8.length)}>Generation 8</button>
-                        <button on:click={() => loadPokemon(9, $generation9.length)}>Generation 9</button>
-                    </div>
-              </div> 
+        <div class="genbuttonz">
+            <button class="genbuttons" on:click={() => loadPokemon(2, $generation2.length)}>Generation 2</button>
+            <button class="genbuttons" on:click={() => loadPokemon(3, $generation3.length)}>Generation 3</button>
+            <button class="genbuttons" on:click={() => loadPokemon(4, $generation4.length)}>Generation 4</button>
+            <button class="genbuttons" on:click={() => loadPokemon(5, $generation5.length)}>Generation 5</button>
+            <button class="genbuttons" on:click={() => loadPokemon(6, $generation6.length)}>Generation 6</button>
+            <button class="genbuttons" on:click={() => loadPokemon(7, $generation7.length)}>Generation 7</button>
+            <button class="genbuttons" on:click={() => loadPokemon(8, $generation8.length)}>Generation 8</button>
+            <button class="genbuttons" on:click={() => loadPokemon(9, $generation9.length)}>Generation 9</button>
+        
         </div>
+       
     {/if}
 </div>
 
@@ -183,54 +185,36 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 3vh;
+    right:1.05vw;
+    grid-template-columns: repeat(5, 0.5fr);
+    row-gap: 2vh;
 }
-    #divi{
-        position: absolute;
+    .genbuttons{
+        position: relative;
+        padding: 0;
+        margin-right: 0.3vw;
+        width: 11.4vw;
+        height: 4vh;
         top:10vh;
-        left:2vw;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 100%;
+        transition: ease-out 0.25s;
+        background-color:ghostwhite;
+        border-color: black;
+        border-style: solid;
+        border-width: 0.05vw;
+        z-index: 10; /* Increase if necessary */
     }
 
-    .dropbtn {
-    background-color: grey;
-    color: white;
-    padding: 11px;
-    font-size: 16px;
-    border: none;
-}
-
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-    position: relative;
-    display: inline-block;
-    left:80vw;
+    .genbuttons:hover{
+        background-color:rosybrown;
+        scale:1.05;
     }
 
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    .genbuttonz{
+        position: absolute;
+        top:-1.5vh;
+        display: flex;
+        right: 0
     }
-
-    /* Links inside the dropdown */
-    .dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content button:hover {background-color: #ddd;}
-
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {display: block;}
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>

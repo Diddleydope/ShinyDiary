@@ -113,7 +113,7 @@
     <button class="enclosureActive" on:click={() => (showModal = true)}>
         {#if $loggedIn==true}
             <h2 id="pokename">{pokemonName}</h2>
-            <div id="pokeimagecontainer">
+            <div id={"pokeimagecontainer" + $currentGen}>
                 <img src={imageSource} alt="" class="pokeImages">
             </div>
             <div class="counter">{$shinyCounter[pokedexNumber]}</div>
@@ -123,7 +123,7 @@
     <button class="enclosureCompleted" on:click={() => (showModal = true)}>
         {#if $loggedIn==true}
             <h2 id="pokename">{pokemonName}</h2>
-            <div id="pokeimagecontainer">
+            <div id={"pokeimagecontainer" + $currentGen}>
                 <img src={imageSource} alt="" class="pokeImages">
             </div>
             <div class="counter">Found!</div>
@@ -133,10 +133,10 @@
     <button class="enclosure" on:click={() => (showModal = true)}>
         {#if $loggedIn==true}
             <h2 id="pokename">{pokemonName}</h2>
-            <div id="pokeimagecontainer">
+            <div id={"pokeimagecontainer" + $currentGen}>
                 <img src={imageSource} alt="" class="pokeImages">
             </div>
-            <div class="counter">{$shinyCounter[pokedexNumber]}</div>
+            
         {/if}
     </button>
 {/if}
@@ -168,8 +168,8 @@
     .enclosure{
         position: relative;
         background-color: whitesmoke;
-        height: 23vh;
-        width: 17vw;
+        height: 25vh;
+        width: 19vw;
         top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;
@@ -179,8 +179,8 @@
     .enclosureActive{
         position: relative;
         background-color:lightsalmon;
-        height: 23vh;
-        width: 17vw;
+        height: 25vh;
+        width: 19vw;
         top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;
@@ -189,8 +189,8 @@
     .enclosureCompleted{
         position: relative;
         background-color:lightgreen;
-        height: 23vh;
-        width: 17vw;
+        height: 25vh;
+        width: 19vw;
         top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;
@@ -215,10 +215,79 @@
     }
 
 
-    #pokeimagecontainer img{
+    #pokeimagecontainer3 img{
         position: relative;
         height:100%;
         width:100%;
+        height:5.5vw;
+        width:5.5vw;
+        bottom:5.5vh;
+        right:5vw;
+    }
+
+    #pokeimagecontainer2 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:7vw;
+        width:7vw;
+        bottom:3.5vw;
+        right:4.5vw;
+    }
+
+    #pokeimagecontainer4 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:7.6vw;
+        width:7.6vw;
+        bottom:3.6vw;
+        right:4.7vw;
+    }
+    #pokeimagecontainer5 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:8.5vw;
+        width:8.5vw;
+        bottom:3.5vw;
+        right:4.5vw;
+    }
+    #pokeimagecontainer6 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:8vw;
+        width:8vw;
+        bottom:3.5vw;
+        right:4.5vw;
+    }
+    #pokeimagecontainer7 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:8vw;
+        width:8vw;
+        bottom:3.5vw;
+        right:4.5vw;
+    }
+    #pokeimagecontainer8 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:7.5vw;
+        width:7.5vw;
+        bottom:3.5vw;
+        right:4.5vw;
+    }
+    #pokeimagecontainer9 img{
+        position: relative;
+        height:100%;
+        width:100%;
+        height:7.5vw;
+        width:7.5vw;
+        bottom:3.5vw;
+        right:4.5vw;
     }
 
     #pokename{
@@ -243,13 +312,6 @@
         left:-3vw;
     }
 
-    #pokeimagecontainer{
-        position: relative;
-        border-bottom:1px solid black;
-        height:7.5vw;
-        width:7.5vw;
-        bottom:3.5vw;
-    }
 
     #pokeimagecontainerModule{
         position: relative;
