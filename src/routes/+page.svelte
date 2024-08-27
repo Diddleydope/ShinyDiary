@@ -10,6 +10,7 @@
                 generation6, generation7, generation8, generation9 } from './store';
     import HuntingScreen from './HuntingScreen/+page.svelte'
     import ActiveHunts from './ActiveHunts/+page.svelte';
+    import ShinyDex from './ShinyDex/+page.svelte';
 
 
     //import { pokenames } from './pokemonnames.svelte';
@@ -29,7 +30,6 @@
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 //make auth and firestore references
 export const auth = getAuth(app);
 export const db = getFirestore(app);

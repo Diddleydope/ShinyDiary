@@ -29,7 +29,7 @@
     
     
 
-    async function loadPokemon(generation:number, pokearray:number){
+    export async function loadPokemon(generation:number, pokearray:number){
         $currentGen = generation;
         if(pokearray==0){
             console.log(pokearray)
@@ -127,10 +127,10 @@
                 $currentGenLength = $generation9.length;
             }
         }
-    }   
-    onMount(async () => {
-        /*
+    }    /*
         
+    onMount(async () => {
+       
         $generation2 = [];
         $generation3 = [];
         $generation4 = [];
@@ -143,11 +143,11 @@
         for(let i = 0; i<$shinyCounter.length; i++){
             $shinyCounter[i] = 0;
         }
-        */
+        
         console.log($currentGen);
 		loadPokemon($currentGen, $currentGenLength);
 	});
-
+*/
     //PROBLEM IS WITH DISPLAYING COUNTER ON DEX ENTRY AND IN ACTIVE HUNTS. GIVE OVER STATUS AND COUNTER
     //AS PARAMETER
     

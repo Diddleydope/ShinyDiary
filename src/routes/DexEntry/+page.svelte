@@ -154,7 +154,9 @@
 		Here is information on this Pokémon
 	</ol> 
     {#if pokemonStatus==false}
-        <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName, pokedexNumber))}>Start Hunt</button>
+        <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName, pokedexNumber))}>
+            <span class="spankekw">Start Hunt</span>
+        </button>
     {:else}
         <button id="continueHuntButton" on:click={() => (continueHunt(imageSource,pokemonName, pokedexNumber))}>Continue Hunt</button>
     {/if}
@@ -329,34 +331,118 @@
         width:100%;
     }
 
-    #startHuntButton{
-        position: absolute;
-        width:10vw;
-        height:5vw;
-        bottom:2vh;
-        right:2vw;
-        border-radius: 8%;
-        background-color: cornflowerblue;
-        transition: ease-in-out 0.1s;
+    #startHuntButton {
+    background-color:#89CFF0; /* Green */
+    outline: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 130%;
+    position: relative;
+    overflow: hidden;
+    left:49vw;
+    top:20vh;
+    height:10vh;
+    width:13vw;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.9px;
+    border: black;
+    border-width: 0.005cm;
+    border-style: solid;
+}
+
+/* Shine Effect */
+#startHuntButton::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#startHuntButton:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+#startHuntButton:hover{
+        background-color:#3F51B5;
+        scale: 110%;
     }
 
-    #startHuntButton:hover{
-        background-color:blue;
+
+
+/* Animation for Shine */
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%);
+    }
+}
+
+
+
+#continueHuntButton {
+    background-color:#90EE90; /* Green */
+    outline: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 130%;
+    text-decoration:black;
+    position: relative;
+    overflow: hidden;
+    left:49vw;
+    top:20vh;
+    height:10vh;
+    
+    width:13vw;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.7px;
+    border: black;
+    border-width: 0.005cm;
+    border-style: solid;
+}
+
+/* Shine Effect */
+#continueHuntButton::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#continueHuntButton:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+#continueHuntButton:hover{
+        background-color:#32CD32;
+        box-shadow: 1vh 1vw;
+        scale: 110%;
+        
     }
 
-    #continueHuntButton{
-        position: absolute;
-        width:10vw;
-        height:5vw;
-        bottom:2vh;
-        right:2vw;
-        border-radius: 8%;
-        background-color: lightgreen;
-        transition: ease-in-out 0.1s;
-    }
-    #continueHuntButton:hover{
-        background-color:green;
-    }
 
     .counter{
         position: absolute;

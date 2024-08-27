@@ -14,7 +14,7 @@
         <slot></slot>
         <header class="navHeader">
             <nav class="navBar">
-                <img src={Pokeball} alt="" id="pokeball">
+        
                 <ul class="navLinks">
                     <a href="../ActiveHunts">
                         <button class="navButtons">ActiveHunts</button>
