@@ -36,34 +36,36 @@
         await unregister($incrementKeybind);
         showComponent.set(false);
         let gencheck;
-        if(dexnr<=252){
-            gencheck = 2;
-        }
-        else if(dexnr<=387){
-            gencheck = 3;
-        }
-        else if(dexnr<=494){
-            gencheck = 4;
-        }
-        else if(dexnr<=650){
-            gencheck = 5;
-        }
-        else if(dexnr<=722){
-            gencheck = 6;
-        }
-        else if(dexnr<=810){
-            gencheck = 7;
-        }
-        else if(dexnr<=906){
-            gencheck = 8;
-        }
-        else{
+        if(dexnr>906){
             gencheck = 9;
         }
-        for(let i = 2; i<=gencheck; i++){
+        else if(dexnr>810){
+            gencheck = 8;
+        }
+        else if(dexnr>722){
+            gencheck = 7;
+        }
+        else if(dexnr>650){
+            gencheck = 6;
+        }
+        else if(dexnr>494){
+            gencheck = 5;
+        }
+        else if(dexnr>387){
+            gencheck = 4;
+        }
+        else if(dexnr>252){
+            gencheck = 3;
+        }
+        else{
+            gencheck = 2;
+        }
+        for(let i = 9; i>=gencheck; i--){
             let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
             updateDoc(reference, {active: false});
             updateDoc(reference, {counter: 0});
+            console.log(dexnr);
+            console.log(gencheck);
         }
 
         if($generation2.length>1 && dexnr<=252){
@@ -99,32 +101,32 @@
         await unregister($incrementKeybind);
         showComponent.set(false);
         let gencheck;
-        if(dexnr<=252){
-            gencheck = 2;
-        }
-        else if(dexnr<=387){
-            gencheck = 3;
-        }
-        else if(dexnr<=494){
-            gencheck = 4;
-        }
-        else if(dexnr<=650){
-            gencheck = 5;
-        }
-        else if(dexnr<=722){
-            gencheck = 6;
-        }
-        else if(dexnr<=810){
-            gencheck = 7;
-        }
-        else if(dexnr<=906){
-            gencheck = 8;
-        }
-        else{
+        if(dexnr>906){
             gencheck = 9;
         }
+        else if(dexnr>810){
+            gencheck = 8;
+        }
+        else if(dexnr>722){
+            gencheck = 7;
+        }
+        else if(dexnr>650){
+            gencheck = 6;
+        }
+        else if(dexnr>494){
+            gencheck = 5;
+        }
+        else if(dexnr>387){
+            gencheck = 4;
+        }
+        else if(dexnr>252){
+            gencheck = 3;
+        }
+        else{
+            gencheck = 2;
+        }
         console.log(gencheck, "check var here");
-        for(let i = 2; i<=gencheck; i++){
+        for(let i = 9; i<=gencheck; i--){
             console.log("counter of times exec")
             let reference = doc(db, 'Pokémon/Generation' + i + '/Pokémon/' + dexnr);
             updateDoc(reference, {completedStatus: true});

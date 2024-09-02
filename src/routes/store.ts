@@ -6,6 +6,8 @@ import { persisted } from "svelte-persisted-store";
 
 export const loggedIn = writable(false);
 export const pokemonList = writable(new Array<DexMons>());
+export const tempPokemonList = writable(new Array<DexMons>());
+export const tempArray = writable(new Array<DexMons>());
 export const showComponent = writable(false);
 export const currentHuntScreen = writable(new Array<any>());
 export const counter = writable(0);

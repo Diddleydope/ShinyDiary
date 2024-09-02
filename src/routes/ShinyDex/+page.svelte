@@ -18,18 +18,39 @@
 </script>
 
 <script lang="ts">
+
     import { collection, getDocs, orderBy, query } from 'firebase/firestore';
     import DexEntry from '../DexEntry/+page.svelte';
     import { loggedIn, pokemonList, generation2,
         generation3,generation4,generation5, generation6,
-        generation7, generation8, generation9, shinyCounter} from '../store';
+        generation7, generation8, generation9, shinyCounter, tempPokemonList, tempArray} from '../store';
     import { db } from '../+page.svelte';
     import { onMount } from 'svelte';
     import { persisted } from 'svelte-persisted-store'
-    
+
+    $: pokemonFilter = ""
+    $tempPokemonList = [...$pokemonList];
     
 
-    export async function loadPokemon(generation:number, pokearray:number){
+    function filterPokemon(){
+        let counter = 0;
+        $tempArray = [];
+        $pokemonList = []; //empty original list
+        $pokemonList = [...$tempPokemonList]; //refill it w original content
+        //$tempPokemonList = [...$pokemonList];
+       for(let i = 0; i<$pokemonList.length; i++){
+            if($pokemonList[i].name.includes(pokemonFilter) == true){
+                $tempArray[counter] = $pokemonList[i];
+                counter = counter + 1;
+            }
+       }
+       $pokemonList = [];
+       $pokemonList = [...$tempArray];
+    }
+
+    
+
+    async function loadPokemon(generation:number, pokearray:number){
         $currentGen = generation;
         if(pokearray==0){
             console.log(pokearray)
@@ -127,6 +148,7 @@
                 $currentGenLength = $generation9.length;
             }
         }
+        $tempPokemonList = [...$pokemonList];
     }    /*
         
     onMount(async () => {
@@ -140,9 +162,9 @@
         $generation8 = [];
         $generation9 = [];
          
-        for(let i = 0; i<$shinyCounter.length; i++){
-            $shinyCounter[i] = 0;
-        }
+        //for(let i = 0; i<$shinyCounter.length; i++){
+        //   $shinyCounter[i] = 0;
+        //}
         
         console.log($currentGen);
 		loadPokemon($currentGen, $currentGenLength);
@@ -155,6 +177,8 @@
 
 <div>  
     {#if $loggedIn==true}
+         <input type="text" class="inputbox" bind:value={pokemonFilter} placeholder="Search..." 
+         on:input={filterPokemon}><input>
         <div class="gridContainer">
             {#each $pokemonList as attribute}
                 <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
@@ -179,6 +203,19 @@
 
 
 <style>
+    .inputbox{
+        position: fixed;
+        top:13vh;
+        z-index: 2;
+        height:4vh;
+        width:15vw;
+        left:2vw;
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        border-radius: 0.75rem;
+    }
+
     .gridContainer{
     position: relative;
     top:5vh;
@@ -203,7 +240,7 @@
         border-color: black;
         border-style: solid;
         border-width: 0.05vw;
-        z-index: 10; /* Increase if necessary */
+        z-index: 3; /* Increase if necessary */
     }
 
     .genbuttons:hover{

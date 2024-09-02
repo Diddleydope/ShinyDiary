@@ -2,7 +2,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "firebase/app";
     import { getAuth } from "firebase/auth";
-    import { collection, getFirestore , query, orderBy, limit, getDocs, updateDoc } from "firebase/firestore";
+    import { collection, getFirestore , query, orderBy, limit, getDocs, updateDoc, deleteDoc, deleteField } from "firebase/firestore";
     import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
     import {doc, setDoc} from 'firebase/firestore';
     // TODO: Add SDKs for Firebase products that you want to use
@@ -67,12 +67,124 @@ Gen 7: 810
 Gen 8: 906
 Gen 9: 1000
 
-for(let i = 1; i<906; i++){// do this for all gens first
-    let reference = doc(db, 'Pokémon/Generation8/Pokémon/' + i);
-    updateDoc(reference, {completedStatus: false});
-    updateDoc(reference, {active: false});
- }
-  */
+Normal: https://archives.bulbagarden.net/media/upload/8/8c/Normal_icon_HOME3.png
+Bug: https://archives.bulbagarden.net/media/upload/5/51/Bug_icon_HOME3.png
+Dark: https://archives.bulbagarden.net/media/upload/7/71/Dark_icon_HOME3.png
+Dragon: https://archives.bulbagarden.net/media/upload/c/c6/Dragon_icon_HOME3.png
+Electric: https://archives.bulbagarden.net/media/upload/c/cf/Electric_icon_HOME3.png
+Fairy: https://archives.bulbagarden.net/media/upload/0/0b/Fairy_icon_HOME3.png
+Fighting: https://archives.bulbagarden.net/media/upload/c/c2/Fighting_icon_HOME3.png
+Fire: https://archives.bulbagarden.net/media/upload/f/f9/Fire_icon_HOME3.png
+Flying: https://archives.bulbagarden.net/media/upload/c/c5/Flying_icon_HOME3.png
+Ghost: https://archives.bulbagarden.net/media/upload/2/23/Ghost_icon_HOME3.png
+Grass: https://archives.bulbagarden.net/media/upload/8/81/Grass_icon_HOME3.png
+Ground: https://archives.bulbagarden.net/media/upload/e/ee/Ground_icon_HOME3.png
+Ice: https://archives.bulbagarden.net/media/upload/8/86/Ice_icon_HOME3.png
+Poison: https://archives.bulbagarden.net/media/upload/9/98/Poison_icon_HOME3.png
+Psychic: https://archives.bulbagarden.net/media/upload/2/2d/Psychic_icon_HOME3.png
+Rock: https://archives.bulbagarden.net/media/upload/5/51/Rock_icon_HOME3.png
+Steel: https://archives.bulbagarden.net/media/upload/7/78/Steel_icon_HOME3.png
+Water: https://archives.bulbagarden.net/media/upload/e/e7/Water_icon_HOME3.png
+
+
+
+let files;
+let tempArray = new Array(2);
+tempArray[0] = "";
+tempArray[1] = "";
+const response = await fetch('TypingsGen2.txt');
+files = await response.text();
+let typing = files.split('\n');
+
+for(let i = 1; i<1000; i++){// do this for all gens first
+    let counter = 0;
+    while(counter<2){
+        if(typing[i-1].includes("Normal")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/8/8c/Normal_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Bug")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/5/51/Bug_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Dark")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/7/71/Dark_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Dragon")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/c/c6/Dragon_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Electric")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/c/cf/Electric_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Fairy")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/0/0b/Fairy_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Fighting")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/c/c2/Fighting_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Fire")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/f/f9/Fire_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Flying")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/c/c5/Flying_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Ghost")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/2/23/Ghost_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Grass")){
+            console.log("got grass");
+            console.log("hope");
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/8/81/Grass_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Ground")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/e/ee/Ground_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Ice")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/8/86/Ice_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Poison")){
+            console.log("got inside");
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/9/98/Poison_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Psychic")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/2/2d/Psychic_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Rock")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/5/51/Rock_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Steel")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/7/78/Steel_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        if(typing[i-1].includes("Water")){
+            tempArray[counter] = ["https://archives.bulbagarden.net/media/upload/e/e7/Water_icon_HOME3.png"];
+            counter = counter + 1;
+        }
+        console.log("AHHHH");
+        counter = 2;
+    }
+    let reference = doc(db, 'Pokémon/Generation9/Pokémon/' + i);
+    updateDoc(reference, {typing1: tempArray[0]});
+    updateDoc(reference, {typing2: tempArray[1]});
+    tempArray = ["", ""];
+
+}
+
+*/
 
 
 
