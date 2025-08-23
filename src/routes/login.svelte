@@ -77,10 +77,6 @@
             margin-top: 1vh;
         }
 
-        .buttonContainer{
-            display: flex;
-            justify-content: center;
-        }
 
         .Buttons{
             margin-top: 2vh;
@@ -104,24 +100,18 @@
 
 
         #signOutButton{
-            position:absolute;
-            right:0vw;
-            top:0vh;
             font-family: 'Permanent Marker', cursive;
-            font-size: 130%;
+            font-size: 90%;
             background-color: transparent;
-            height:8vh;
-            width:20vw;
+            height:5vh;
+            width:9vw;
             transition: ease-out 0.25s;
             background-color:transparent;
-            border-color: black;
-            border-style: solid;
-            border-width: 0.05vw;
         }
 
         #signOutButton:hover{
             background-color: crimson;
-            scale:1.05
+            scale:1.1;
         }
         
     </style>

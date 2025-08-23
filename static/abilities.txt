@@ -1,0 +1,995 @@
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Shield Dust	
+Shed Skin	
+Compoundeyes	
+Shield Dust	
+Shed Skin	
+Swarm	
+Keen Eye	Tangled Feet
+Keen Eye	Tangled Feet
+Keen Eye	Tangled Feet
+Run Away	Guts
+Run Away	Guts
+Keen Eye	
+Keen Eye	
+Intimidate	Shed Skin
+Intimidate	Shed Skin
+Static	
+Static	
+Sand Veil	
+Sand Veil	
+Poison Point	Rivalry
+Poison Point	Rivalry
+Poison Point	Rivalry
+Poison Point	Rivalry
+Poison Point	Rivalry
+Poison Point	Rivalry
+Cute Charm	Magic Guard
+Cute Charm	Magic Guard
+Flash Fire	
+Flash Fire	
+Cute Charm	Competitive
+Cute Charm	Competitive
+Inner Focus	
+Inner Focus	
+Chlorophyll	
+Chlorophyll	
+Chlorophyll	
+Effect Spore	Dry Skin
+Effect Spore	Dry Skin
+Compoundeyes	Tinted Lens
+Shield Dust	Tinted Lens
+Sand Veil	Arena Trap
+Sand Veil	Arena Trap
+Pickup	Technician
+Limber	Technician
+Damp	Cloud Nine
+Damp	Cloud Nine
+Vital Spirit	Anger Point
+Vital Spirit	Anger Point
+Intimidate	Flash Fire
+Intimidate	Flash Fire
+Water Absorb	Damp
+Water Absorb	Damp
+Water Absorb	Damp
+Synchronize	Inner Focus
+Synchronize	Inner Focus
+Synchronize	Inner Focus
+Guts	No Guard
+Guts	No Guard
+Guts	No Guard
+Chlorophyll	
+Chlorophyll	
+Chlorophyll	
+Clear Body	Liquid Ooze
+Clear Body	Liquid Ooze
+Rock Head	Sturdy
+Rock Head	Sturdy
+Rock Head	Sturdy
+Run Away	Flash Fire
+Run Away	Flash Fire
+Oblivious	Own Tempo
+Oblivious	Own Tempo
+Magnet Pull	Sturdy
+Magnet Pull	Sturdy
+Keen Eye	Inner Focus
+Run Away	Early Bird
+Run Away	Early Bird
+Thick Fat	Hydration
+Thick Fat	Hydration
+Stench	Sticky Hold
+Stench	Sticky Hold
+Shell Armor	Skill Link
+Shell Armor	Skill Link
+Levitate	
+Levitate	
+Cursed Body	
+Rock Head	Sturdy
+Insomnia	Forewarn
+Insomnia	Forewarn
+Hyper Cutter	Shell Armor
+Hyper Cutter	Shell Armor
+Soundproof	Static
+Soundproof	Static
+Chlorophyll	
+Chlorophyll	
+Rock Head	Lightningrod
+Rock Head	Lightningrod
+Limber	Reckless
+Keen Eye	Iron Fist
+Own Tempo	Oblivious
+Levitate	Neutralizing Gas
+Levitate	Neutralizing Gas
+Lightningrod	Rock Head
+Lightningrod	Rock Head
+Natural Cure	Serene Grace
+Chlorophyll	Leaf Guard
+Early Bird	Scrappy
+Swift Swim	Sniper
+Poison Point	Sniper
+Swift Swim	Water Veil
+Swift Swim	Water Veil
+Illuminate	Natural Cure
+Illuminate	Natural Cure
+Soundproof	Filter
+Swarm	Technician
+Oblivious	Forewarn
+Static	
+Flame Body	
+Hyper Cutter	Mold Breaker
+Intimidate	Anger Point
+Swift Swim	
+Intimidate	
+Water Absorb	Shell Armor
+Limber	
+Run Away	Adaptability
+Water Absorb	
+Volt Absorb	
+Flash Fire	
+Trace	Download
+Swift Swim	Shell Armor
+Swift Swim	Shell Armor
+Swift Swim	Battle Armor
+Swift Swim	Battle Armor
+Rock Head	Pressure
+Immunity	Thick Fat
+Pressure	
+Pressure	
+Pressure	
+Shed Skin	
+Shed Skin	
+Inner Focus	
+Pressure	
+Synchronize	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Run Away	Keen Eye
+Run Away	Keen Eye
+Insomnia	Keen Eye
+Insomnia	Keen Eye
+Swarm	Early Bird
+Swarm	Early Bird
+Swarm	Insomnia
+Swarm	Insomnia
+Inner Focus	
+Volt Absorb	Illuminate
+Volt Absorb	Illuminate
+Static	
+Cute Charm	Magic Guard
+Cute Charm	
+Hustle	Serene Grace
+Hustle	Serene Grace
+Synchronize	Early Bird
+Synchronize	Early Bird
+Static	
+Static	
+Static	
+Chlorophyll	
+Thick Fat	Huge Power
+Thick Fat	Huge Power
+Sturdy	Rock Head
+Water Absorb	Damp
+Chlorophyll	Leaf Guard
+Chlorophyll	Leaf Guard
+Chlorophyll	Leaf Guard
+Run Away	Pickup
+Chlorophyll	Solar Power
+Chlorophyll	Solar Power
+Speed Boost	Compoundeyes
+Damp	Water Absorb
+Damp	Water Absorb
+Synchronize	
+Synchronize	
+Insomnia	Super Luck
+Oblivious	Own Tempo
+Levitate	
+Levitate	
+Shadow Tag	
+Inner Focus	Early Bird
+Sturdy	
+Sturdy	
+Serene Grace	Run Away
+Hyper Cutter	Sand Veil
+Rock Head	Sturdy
+Intimidate	Run Away
+Intimidate	Quick Feet
+Poison Point	Swift Swim
+Swarm	Technician
+Sturdy	Gluttony
+Swarm	Guts
+Inner Focus	Keen Eye
+Pickup	Quick Feet
+Guts	Quick Feet
+Magma Armor	Flame Body
+Magma Armor	Flame Body
+Oblivious	Snow Cloak
+Oblivious	Snow Cloak
+Hustle	Natural Cure
+Hustle	Sniper
+Suction Cups	Sniper
+Vital Spirit	Hustle
+Swift Swim	Water Absorb
+Keen Eye	Sturdy
+Early Bird	Flash Fire
+Early Bird	Flash Fire
+Swift Swim	Sniper
+Pickup	
+Sturdy	
+Trace	Download
+Intimidate	Frisk
+Own Tempo	Technician
+Guts	Steadfast
+Intimidate	Technician
+Oblivious	Forewarn
+Static	
+Flame Body	
+Thick Fat	Scrappy
+Natural Cure	Serene Grace
+Pressure	
+Pressure	
+Pressure	
+Guts	
+Shed Skin	
+Sand Stream	
+Pressure	
+Pressure	
+Natural Cure	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Run Away	Quick Feet
+Intimidate	Quick Feet
+Pickup	Gluttony
+Pickup	Gluttony
+Shield Dust	
+Shed Skin	
+Swarm	
+Shed Skin	
+Shield Dust	
+Swift Swim	Rain Dish
+Swift Swim	Rain Dish
+Swift Swim	Rain Dish
+Chlorophyll	Early Bird
+Chlorophyll	Early Bird
+Chlorophyll	Early Bird
+Guts	
+Guts	
+Keen Eye	Hydration
+Keen Eye	Drizzle
+Synchronize	Trace
+Synchronize	Trace
+Synchronize	Trace
+Swift Swim	
+Intimidate	
+Effect Spore	Poison Heal
+Effect Spore	Poison Heal
+Truant	
+Vital Spirit	
+Truant	
+Compoundeyes	
+Speed Boost	
+Wonder Guard	
+Soundproof	
+Soundproof	
+Soundproof	
+Thick Fat	Guts
+Thick Fat	Guts
+Thick Fat	Huge Power
+Sturdy	Magnet Pull
+Cute Charm	Normalize
+Cute Charm	Normalize
+Keen Eye	Stall
+Hyper Cutter	Intimidate
+Sturdy	Rock Head
+Sturdy	Rock Head
+Sturdy	Rock Head
+Pure Power	
+Pure Power	
+Static	Lightningrod
+Static	Lightningrod
+Plus	
+Minus	
+Illuminate	Swarm
+Oblivious	Tinted Lens
+Natural Cure	Poison Point
+Liquid Ooze	Sticky Hold
+Liquid Ooze	Sticky Hold
+Rough Skin	
+Rough Skin	
+Water Veil	Oblivious
+Water Veil	Oblivious
+Oblivious	Simple
+Magma Armor	Solid Rock
+White Smoke	Drought
+Thick Fat	Own Tempo
+Thick Fat	Own Tempo
+Own Tempo	Tangled Feet
+Hyper Cutter	Arena Trap
+Levitate	
+Levitate	
+Sand Veil	
+Sand Veil	
+Natural Cure	
+Natural Cure	
+Immunity	
+Shed Skin	
+Levitate	
+Levitate	
+Oblivious	Anticipation
+Oblivious	Anticipation
+Hyper Cutter	Shell Armor
+Hyper Cutter	Shell Armor
+Levitate	
+Levitate	
+Suction Cups	
+Suction Cups	
+Battle Armor	
+Battle Armor	
+Swift Swim	
+Marvel Scale	Competitive
+Color Change	
+Insomnia	Frisk
+Insomnia	Frisk
+Levitate	
+Pressure	
+Chlorophyll	Solar Power
+Levitate	
+Pressure	Super Luck
+Shadow Tag	
+Inner Focus	Ice Body
+Inner Focus	Ice Body
+Thick Fat	Ice Body
+Thick Fat	Ice Body
+Thick Fat	Ice Body
+Shell Armor	
+Swift Swim	
+Swift Swim	
+Swift Swim	Rock Head
+Swift Swim	
+Rock Head	
+Rock Head	
+Intimidate	
+Clear Body	
+Clear Body	
+Clear Body	
+Clear Body	
+Clear Body	
+Clear Body	
+Levitate	
+Levitate	
+Drizzle	
+Drought	
+Air Lock	
+Serene Grace	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Keen Eye	
+Intimidate	
+Intimidate	
+Simple	Unaware
+Simple	Unaware
+Shed Skin	
+Swarm	
+Rivalry	Intimidate
+Rivalry	Intimidate
+Rivalry	Intimidate
+Natural Cure	Poison Point
+Natural Cure	Poison Point
+Mold Breaker	
+Mold Breaker	
+Sturdy	
+Sturdy	
+Shed Skin	
+Anticipation	
+Swarm	
+Honey Gather	
+Pressure	
+Run Away	Pickup
+Swift Swim	
+Swift Swim	
+Chlorophyll	
+Flower Gift	
+Sticky Hold	Storm Drain
+Sticky Hold	Storm Drain
+Technician	Pickup
+Aftermath	Unburden
+Aftermath	Unburden
+Run Away	Klutz
+Cute Charm	Klutz
+Levitate	
+Insomnia	Super Luck
+Limber	Own Tempo
+Thick Fat	Own Tempo
+Levitate	
+Stench	Aftermath
+Stench	Aftermath
+Levitate	Heatproof
+Levitate	Heatproof
+Sturdy	Rock Head
+Soundproof	Filter
+Natural Cure	Serene Grace
+Keen Eye	Tangled Feet
+Pressure	
+Sand Veil	
+Sand Veil	
+Sand Veil	
+Pickup	Thick Fat
+Steadfast	Inner Focus
+Steadfast	Inner Focus
+Sand Stream	
+Sand Stream	
+Battle Armor	Sniper
+Battle Armor	Sniper
+Anticipation	Dry Skin
+Anticipation	Dry Skin
+Levitate	
+Swift Swim	Storm Drain
+Swift Swim	Storm Drain
+Swift Swim	Water Absorb
+Snow Warning	
+Snow Warning	
+Pressure	
+Magnet Pull	Sturdy
+Own Tempo	Oblivious
+Lightningrod	Solid Rock
+Chlorophyll	Leaf Guard
+Motor Drive	
+Flame Body	
+Hustle	Serene Grace
+Speed Boost	Tinted Lens
+Leaf Guard	
+Snow Cloak	
+Hyper Cutter	Sand Veil
+Oblivious	Snow Cloak
+Adaptability	Download
+Steadfast	Sharpness
+Sturdy	Magnet Pull
+Pressure	
+Snow Cloak	
+Levitate	
+Levitate	
+Levitate	
+Levitate	
+Pressure	
+Pressure	
+Flash Fire	
+Slow Start	
+Pressure	
+Levitate	
+Hydration	
+Hydration	
+Bad Dreams	
+Natural Cure	
+Multitype	
+Victory Star	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Run Away	Keen Eye
+Illuminate	Keen Eye
+Vital Spirit	Pickup
+Intimidate	Sand Rush
+Intimidate	Sand Rush
+Limber	Unburden
+Limber	Unburden
+Gluttony	
+Gluttony	
+Gluttony	
+Gluttony	
+Gluttony	
+Gluttony	
+Forewarn	Synchronize
+Forewarn	Synchronize
+Big Pecks	Super Luck
+Big Pecks	Super Luck
+Big Pecks	Super Luck
+Lightningrod	Motor Drive
+Lightningrod	Motor Drive
+Sturdy	Weak Armor
+Sturdy	Weak Armor
+Sturdy	Sand Stream
+Unaware	Klutz
+Unaware	Klutz
+Sand Rush	Sand Force
+Sand Rush	Sand Force
+Healer	Regenerator
+Guts	Sheer Force
+Guts	Sheer Force
+Guts	Sheer Force
+Swift Swim	Hydration
+Swift Swim	Hydration
+Swift Swim	Poison Touch
+Guts	Inner Focus
+Sturdy	Inner Focus
+Swarm	Chlorophyll
+Leaf Guard	Chlorophyll
+Swarm	Chlorophyll
+Poison Point	Swarm
+Poison Point	Swarm
+Poison Point	Swarm
+Prankster	Infiltrator
+Prankster	Infiltrator
+Chlorophyll	Own Tempo
+Chlorophyll	Own Tempo
+Reckless	Adaptability
+Intimidate	Moxie
+Intimidate	Moxie
+Intimidate	Moxie
+Hustle	
+Sheer Force	
+Water Absorb	Chlorophyll
+Sturdy	Shell Armor
+Sturdy	Shell Armor
+Shed Skin	Moxie
+Shed Skin	Moxie
+Wonder Skin	Magic Guard
+Mummy	
+Mummy	
+Solid Rock	Sturdy
+Solid Rock	Sturdy
+Defeatist	
+Defeatist	
+Stench	Sticky Hold
+Stench	Weak Armor
+Illusion	
+Illusion	
+Cute Charm	Technician
+Cute Charm	Technician
+Frisk	Competitive
+Frisk	Competitive
+Frisk	Competitive
+Overcoat	Magic Guard
+Overcoat	Magic Guard
+Overcoat	Magic Guard
+Keen Eye	Big Pecks
+Keen Eye	Big Pecks
+Ice Body	Snow Cloak
+Ice Body	Snow Cloak
+Ice Body	Snow Warning
+Chlorophyll	Sap Sipper
+Chlorophyll	Sap Sipper
+Static	
+Swarm	Shed Skin
+Swarm	Shell Armor
+Effect Spore	
+Effect Spore	
+Water Absorb	Cursed Body
+Water Absorb	Cursed Body
+Healer	Hydration
+Compoundeyes	Unnerve
+Compoundeyes	Unnerve
+Iron Barbs	
+Iron Barbs	
+Plus	Minus
+Plus	Minus
+Plus	Minus
+Levitate	
+Levitate	
+Levitate	
+Telepathy	Synchronize
+Telepathy	Synchronize
+Flash Fire	Flame Body
+Flash Fire	Flame Body
+Flash Fire	Flame Body
+Rivalry	Mold Breaker
+Rivalry	Mold Breaker
+Rivalry	Mold Breaker
+Snow Cloak	Slush Rush
+Snow Cloak	Slush Rush
+Levitate	
+Hydration	Shell Armor
+Hydration	Sticky Hold
+Static	Limber
+Inner Focus	Regenerator
+Inner Focus	Regenerator
+Rough Skin	Sheer Force
+Iron Fist	Klutz
+Iron Fist	Klutz
+Defiant	Inner Focus
+Defiant	Inner Focus
+Reckless	Sap Sipper
+Keen Eye	Sheer Force
+Keen Eye	Sheer Force
+Big Pecks	Overcoat
+Big Pecks	Overcoat
+Gluttony	Flash Fire
+Swarm	Hustle
+Hustle	
+Hustle	
+Levitate	
+Flame Body	
+Flame Body	
+Justified	
+Justified	
+Justified	
+Prankster	Defiant
+Prankster	Defiant
+Turboblaze	
+Teravolt	
+Sand Force	Sheer Force
+Pressure	
+Justified	
+Serene Grace	
+Download	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Pickup	Cheek Pouch
+Pickup	Cheek Pouch
+Big Pecks	
+Flame Body	
+Flame Body	
+Shield Dust	Compound Eyes
+Shed Skin	
+Shield Dust	Compound Eyes
+Rivalry	Unnerve
+Rivalry	Unnerve
+Flower Veil	
+Flower Veil	
+Flower Veil	
+Sap Sipper	
+Sap Sipper	
+Iron Fist	Mold Breaker
+Iron Fist	Mold Breaker
+Fur Coat	
+Keen Eye	Infiltrator
+Keen Eye	Infiltrator
+No Guard	
+No Guard	
+Stance Change	
+Healer	
+Healer	
+Sweet Veil	
+Sweet Veil	
+Suction Cups	Contrary
+Suction Cups	Contrary
+Sniper	Tough Claws
+Sniper	Tough Claws
+Poison Point	Poison Touch
+Poison Point	Poison Touch
+Mega Launcher	
+Mega Launcher	
+Dry Skin	Sand Veil
+Dry Skin	Sand Veil
+Strong Jaw	
+Strong Jaw	
+Refrigerate	
+Refrigerate	
+Cute Charm	
+Unburden	Limber
+Cheek Pouch	Pickup
+Clear Body	
+Sap Sipper	Hydration
+Sap Sipper	Hydration
+Sap Sipper	Hydration
+Prankster	
+Natural Cure	Frisk
+Natural Cure	Frisk
+Pickup	Frisk
+Pickup	Frisk
+Own Tempo	Ice Body
+Own Tempo	Ice Body
+Frisk	Infiltrator
+Frisk	Infiltrator
+Fairy Aura	
+Dark Aura	
+Aura Break	Power Construct
+Clear Body	
+Magician	
+Water Absorb	
+Overgrow 	
+Overgrow 	
+Overgrow 	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Keen Eye	Skill Link 
+Keen Eye	Skill Link 
+Keen Eye	Skill Link 
+Stakeout	Strong Jaw 
+Stakeout	Strong Jaw 
+Swarm	
+Battery	
+Levitate	
+Hyper Cutter 	Iron Fist 
+Hyper Cutter 	Iron Fist 
+Dancer	
+Honey Gather 	Shield Dust 
+Honey Gather 	Shield Dust 
+Keen Eye 	Vital Spirit 
+Keen Eye 	Sand Rush 
+Schooling	
+Merciless 	Limber 
+Merciless 	Limber 
+Own Tempo	Stamina 
+Own Tempo	Stamina 
+Water Bubble 	
+Water Bubble 	
+Leaf Guard 	
+Leaf Guard 	
+Illuminate 	Effect Spore
+Illuminate 	Effect Spore
+Corrosion 	
+Corrosion 	
+Fluffy 	Klutz 
+Fluffy 	Klutz 
+Leaf Guard 	Oblivious 
+Leaf Guard 	Oblivious 
+Leaf Guard 	Queenly Majesty 
+Flower Veil 	Triage 
+Inner Focus 	Telepathy 
+Receiver 	
+Wimp Out	
+Emergency Exit	
+Water Compaction 	
+Water Compaction 	
+Innards Out	Unaware
+Battle Armor	
+RKS System	
+Shields Down	
+Comatose	
+Shell Armor	
+Iron Barbs 	Lightningrod
+Disguise	
+Dazzling 	Strong Jaw 
+Berserk 	Sap Sipper 
+Steelworker	
+Bulletproof 	Soundproof 
+Bulletproof 	Soundproof 
+Bulletproof 	Soundproof 
+Electric Surge 	Telepathy
+Psychic Surge 	Telepathy
+Grassy Surge 	Telepathy
+Misty Surge 	Telepathy
+Unaware	
+Sturdy	
+Full Metal Body	
+Shadow Shield	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Prism Armor	
+Soul-Heart	
+Technician	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Beast Boost	
+Volt Absorb	
+Magnet Pull	
+Iron Fist	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Cheek Pouch	
+Cheek Pouch	
+Keen Eye	Unnerve
+Keen Eye	Unnerve
+Pressure	Unnerve
+Swarm	Compound Eyes
+Swarm	Compound Eyes
+Swarm	Frisk
+Run Away	Unburden
+Run Away	Unburden
+Cotton Down	Regenerator
+Cotton Down	Regenerator
+Fluffy 	Run Away
+Fluffy 	Steadfast
+Strong Jaw	Shell Armor
+Strong Jaw	Shell Armor
+Ball Fetch	
+Strong Jaw	
+Steam Engine	Heatproof
+Steam Engine	Flame Body
+Steam Engine	Flame Body
+Ripen	Gluttony
+Ripen	Gluttony
+Ripen	Gluttony
+Sand Spit	Shed Skin
+Sand Spit	Shed Skin
+Gulp Missile	
+Swift Swim	
+Swift Swim	
+Rattled	Static
+Punk Rock	Plus
+Flash Fire	White Smoke
+Flash Fire	White Smoke
+Limber	
+Limber	
+Weak Armor	
+Weak Armor	
+Healer	Anticipation
+Healer	Anticipation
+Healer	Anticipation
+Prankster	Frisk
+Prankster	Frisk
+Prankster	Frisk
+Reckless	Guts
+Battle Armor	Tough Claws
+Weak Armor	
+Steadfast	
+Tangled Feet	Screen Cleaner
+Wandering Spirit	
+Sweet Veil	
+Sweet Veil	
+Battle Armor	
+Lightningrod	
+Shield Dust	
+Shield Dust	
+Power Spot	
+Ice Face	
+Sheer Force	
+Sheer Force	
+Volt Absorb	Hustle
+Volt Absorb	Static
+Water Absorb	Strong Jaw 
+Water Absorb	Ice Body
+Light Metal	Heavy Metal
+Clear Body	Infiltrator
+Clear Body	Infiltrator
+Clear Body	Infiltrator
+Intrepid Sword	
+Dauntless Shield	
+Pressure	
+Inner Focus	
+Unseen Fist	
+Leaf Guard 	
+Transistor	
+Dragon's Maw	
+Chilling Neigh	
+Grim Neigh	
+Unnerve	
+Intimidate	Frisk
+Swarm	Sheer Force
+Guts	Bulletproof
+Swift Swim	Adaptability
+Pressure	Unburden
+Poison Point	Swift Swim
+Healer	
+Overgrow	
+Overgrow	
+Overgrow	
+Blaze	
+Blaze	
+Blaze	
+Torrent	
+Torrent	
+Torrent	
+Aroma Veil	Gluttony
+Lingering Aroma	Gluttony
+Insomnia	
+Insomnia	
+Swarm	
+Swarm	
+Static	Natural Cure
+Volt Absorb	Natural Cure
+Volt Absorb	Natural Cure
+Run Away	Pickup
+Friend Guard	Cheek Pouch
+Own Tempo	
+Well- Baked Body	
+Early Bird	
+Early Bird	
+Seed Sower	
+Intimidate	Hustle
+Purifying Salt	Sturdy
+Purifying Salt	Sturdy
+Purifying Salt	Sturdy
+Flash Fire	
+Flash Fire	
+Flash Fire	
+Own Tempo	Static
+Electromorphosis	Static
+Wind Power	Volt Absorb
+Wind Power	Volt Absorb
+Intimidate	Run Away
+Intimidate	Guard Dog
+Unburden	Pickpocket
+Unburden	Poison Touch
+Wind Rider	
+Wind Rider	
+Mycelium Might	
+Mycelium Might	
+Anger Shell	Shell Armor
+Chlorophyll	Insomnia
+Chlorophyll	Insomnia
+Compoundeyes	
+Synchronize	
+Anticipation	Frisk
+Opportunist	Frisk
+Mold Breaker	Own Tempo
+Mold Breaker	Own Tempo
+Mold Breaker	Own Tempo
+Gooey	Rattled
+Gooey	Rattled
+Big Pecks	Keen Eye
+Water Veil	
+Zero to Hero	
+Overcoat	
+Overcoat	
+Shed Skin	
+Earth Eater	
+Toxic Debris	
+Toxic Debris	
+Pickup	
+Sand Rush	
+Scrappy	Tangled Feet
+Thick Fat	Snow Cloak
+Thick Fat	Slush Rush
+Mold Breaker	
+Unaware	Oblivious
+Commander	
+Vital Spirit	Inner Focus
+Poison Point	Water Absorb
+Cud Chew	Armor Tail
+Serene Grace	Run Away
+Defiant	Supreme Overlord
+Protosynthesis	
+Protosynthesis	
+Protosynthesis	
+Protosynthesis	
+Protosynthesis	
+Protosynthesis	
+Quark Drive	
+Quark Drive	
+Quark Drive	
+Quark Drive	
+Quark Drive	
+Quark Drive	
+Thermal Exchange	
+Thermal Exchange	
+Thermal Exchange	
+Rattled	
