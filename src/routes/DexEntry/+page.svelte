@@ -224,7 +224,7 @@
         height:5.5vw;
         width:5.5vw;
         bottom:5.5vh;
-        right:5vw;
+        right:0vw;
     }
 
     #pokeimagecontainer2 img{
@@ -234,7 +234,7 @@
         height:7vw;
         width:7vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
 
     #pokeimagecontainer4 img{
@@ -244,7 +244,7 @@
         height:7.6vw;
         width:7.6vw;
         bottom:3.6vw;
-        right:4.7vw;
+        right:0vw;
     }
     #pokeimagecontainer5 img{
         position: relative;
@@ -253,7 +253,7 @@
         height:8.5vw;
         width:8.5vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
     #pokeimagecontainer6 img{
         position: relative;
@@ -262,7 +262,7 @@
         height:8vw;
         width:8vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
     #pokeimagecontainer7 img{
         position: relative;
@@ -271,7 +271,7 @@
         height:8vw;
         width:8vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
     #pokeimagecontainer8 img{
         position: relative;
@@ -280,7 +280,7 @@
         height:7.5vw;
         width:7.5vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
     #pokeimagecontainer9 img{
         position: relative;
@@ -289,7 +289,7 @@
         height:7.5vw;
         width:7.5vw;
         bottom:3.5vw;
-        right:4.5vw;
+        right:0vw;
     }
 
     #pokename{

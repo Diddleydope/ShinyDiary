@@ -1,5 +1,4 @@
 
-
 <script lang="ts" context="module">
     import Login from './login.svelte';
     import { loggedIn, showComponent, currentHuntScreen, openSidebar } from './store';
@@ -8,10 +7,6 @@
     import HuntingScreen from './HuntingScreen/+page.svelte';
 	import Sidebar from './NavCode/Sidebar.svelte';
     import Hamburger from './NavCode/Hamburger.svelte';
-
-
-    
-
 </script>
 
 
@@ -25,6 +20,7 @@
         <slot></slot>
         <header class="navHeader">
             <Hamburger></Hamburger>
+            
             {#if $openSidebar==true}
             <Sidebar/>
             {/if}

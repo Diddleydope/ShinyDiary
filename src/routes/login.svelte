@@ -14,14 +14,7 @@
   
 
     <div class="Container">
-        {#if $loggedIn==true}
-            <!--Sign user out-->
-            <div class="buttonContainer" id="signOutContainer">
-                <button type="submit" id="signOutButton"
-                on:click={() => auth.signOut()}>Sign out</button>
-            </div>
-            
-        {:else}
+        {#if $loggedIn==false}
                 <!--Sign user in-->
             <div class="loginContainer">
                 <input  id= "emailInput" class="loginButtons" type="email" bind:value={email}/>
@@ -98,21 +91,6 @@
             margin-left: 0.25vw;
         }
 
-
-        #signOutButton{
-            font-family: 'Permanent Marker', cursive;
-            font-size: 90%;
-            background-color: transparent;
-            height:5vh;
-            width:9vw;
-            transition: ease-out 0.25s;
-            background-color:transparent;
-        }
-
-        #signOutButton:hover{
-            background-color: crimson;
-            scale:1.1;
-        }
         
     </style>
     
