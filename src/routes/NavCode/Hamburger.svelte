@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { openSidebar } from '../store'; // writable(false)
-	import { auth } from '../+page.svelte';
+	import { auth } from '$lib/firebase';
 	import { loggedIn } from '../store';
   
 	function toggle() { $openSidebar = !$openSidebar }

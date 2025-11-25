@@ -1,9 +1,8 @@
     <script lang="ts" context="module">
-        import { getAuth, createUserWithEmailAndPassword, 
+        import { createUserWithEmailAndPassword, 
             signInWithEmailAndPassword } from "firebase/auth";
-        import {auth} from './+page.svelte';
+        import { auth } from '$lib/firebase';
         import { loggedIn } from './store';
-        import MainPage from './+page.svelte';
         let email = "";
         let password = "";
 

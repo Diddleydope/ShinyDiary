@@ -3,9 +3,8 @@
     import { updateDoc, doc } from "firebase/firestore";
     import { loggedIn, showComponent, currentHuntScreen, shinyCounter,
             generation2, generation3, generation4, generation5, generation6, generation7,
-            generation8, generation9 } from '../store';
-    import { db } from '../+page.svelte';
-    import { currentGen, DexMons, currentGenLength } from '../ShinyDex/+page.svelte';
+            generation8, generation9, currentGen, currentGenLength } from '../store';
+    import { db } from '$lib/firebase';
     import Modal from '../PokeDetails/+page.svelte';
 
     let showModal = false;
@@ -173,7 +172,6 @@
         height: 25vh;
         width: 19vw;
         top:10vh;
-        left:1.5vw;
         transition: ease-out 0.25s;
         border-radius: 1.5rem;
     }
@@ -184,7 +182,6 @@
         height: 25vh;
         width: 19vw;
         top:10vh;
-        left:1.5vw;
         transition: ease-out 0.25s;
         border-radius: 1.5rem;
     }
@@ -194,7 +191,6 @@
         height: 25vh;
         width: 19vw;
         top:10vh;
-        left:1.5vw;
         transition: ease-out 0.25s;
         border-radius: 1.5rem;
     }
@@ -202,18 +198,18 @@
     .enclosureCompleted:hover{
         background-color:green;
         box-shadow: 0.5vh 0.5vw;
-        scale: 105%;
+        scale: 101%;
     }
     
     .enclosureActive:hover{
         background-color:orange;
         box-shadow: 0.5vh 0.5vw;
-        scale: 105%;
+        scale: 101%;
     }
     .enclosure:hover{
         background-color:lightslategrey;
         box-shadow: 0.5vh 0.5vw;
-        scale: 105%;
+        scale: 101%;
     }
 
 

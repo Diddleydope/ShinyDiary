@@ -1,11 +1,7 @@
 <script lang="ts">
 import 'firebase/firestore';
 import { updateDoc, doc } from "firebase/firestore";
-import { loggedIn, showComponent, currentHuntScreen, shinyCounter,
-        generation2, generation3, generation4, generation5, generation6, generation7,
-        generation8, generation9 } from '../store';
-import { db } from '../+page.svelte';
-import { currentGen, DexMons, currentGenLength } from '../ShinyDex/+page.svelte';
+import { loggedIn } from '../store';
 import Modal from '../PokeDetails/+page.svelte';
 
 
@@ -62,7 +58,7 @@ let showModal = false;
     .enclosureCompleted:hover{
         background-color:green;
         box-shadow: 0.5vh 0.5vw;
-        scale: 105%;
+        scale: 101%;
     }
     #pokeimagecontainer img{
         position: relative;

@@ -4,8 +4,7 @@
     import { onMount } from 'svelte'
     import { register, unregister } from '@tauri-apps/api/globalShortcut';
     import { doc, updateDoc } from 'firebase/firestore';
-    import { db } from '../+page.svelte';
-    import { currentGen } from '../ShinyDex/+page.svelte';
+    import { db } from '$lib/firebase';
     import { loggedIn,
             generation2, generation3, generation4, generation5, generation6, generation7,
             generation8, generation9 } from '../store';
@@ -177,12 +176,14 @@
 */
 </script>
 
-<div class="container">
-    <div class="imgcontainer">
-        <img src={$currentHuntScreen[0]} alt="" id="activeHuntImg">
+<div class="huntOverlay">
+    <div class="huntContent">
+        <div class="imgcontainer">
+            <img src={$currentHuntScreen[0]} alt="" id="activeHuntImg">
+        </div>
+        <div class="pokename">{$currentHuntScreen[1]}</div>
+        <div class="pokename" id="count">{$shinyCounter[$currentHuntScreen[2]]}</div>
     </div>
-    <div class="pokename">{$currentHuntScreen[1]}</div>
-    <div class="pokename" id="count">{$shinyCounter[$currentHuntScreen[2]]}</div>
     <button id="closebtn" on:click={closeHuntingScreen}><span id="pan">Close</span></button>
     <button id="endhunt" on:click={() => endHunt($currentHuntScreen[2])}><span id="pan2">End Hunt</span></button>
     <button id="completehunt" on:click={() => completeHunt($currentHuntScreen[2])}><span id="pan3">Complete Hunt</span></button>
@@ -191,44 +192,51 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-    .container{
-        position: absolute;
-        top:0;
-        left:0;
-        right:0;
-        bottom:0;
+    .huntOverlay{
+        position: fixed;
+        inset: 0;
+        margin: 0;
         background-color: gainsboro;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
+    .huntContent{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        transform: translateY(-5vh);
+    }
+
+    .imgcontainer{
+        padding: 10px;
+        height:300px;
+        width:300px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .imgcontainer #activeHuntImg{
-        position: relative;
         height: 100%;
         width: 100%;
         background: gray;
         border: 5px solid;
         border-radius: 100%;
-        }
+        object-fit: cover;
+    }
 
-    .container .pokename{
-        position: relative;
+    .huntOverlay .pokename{
         text-align: center;
         font-family: 'Permanent Marker', cursive;
         font-size: 200%;
-        top:17vh;
     }
 
-    .imgcontainer{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -75%);
-        padding: 10px;
-        height:300px;
-        width:300px;
-        overflow: hidden;   
-        }
-
     #count{
-        top:60vh;
+        font-size: 260%;
     }
 
 	#closebtn {

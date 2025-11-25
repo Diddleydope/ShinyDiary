@@ -20,7 +20,6 @@
         <slot></slot>
         <header class="navHeader">
             <Hamburger></Hamburger>
-            
             {#if $openSidebar==true}
             <Sidebar/>
             {/if}
@@ -49,14 +48,20 @@
         width:100vw;
         height: 5vw;
         left:0;
+        z-index: 1500;
         overscroll-behavior: none;
     }
 
 
     :global(body) {
+        margin: 0;
 		padding: 0;
 	}
 
+    .genbuttons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
     
 </style>
-

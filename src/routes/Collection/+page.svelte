@@ -3,12 +3,7 @@
     import { loggedIn, pokemonList, shinyCounter } from '../store';
 
     let nothingCompleted = true;
-
-    for(let i = 0; i<$pokemonList.length; i++){
-        if($pokemonList[i].completedStatus==true){
-            nothingCompleted = false;
-        }
-    }
+    $: nothingCompleted = !$pokemonList.some((pokemon) => pokemon.completedStatus);
 
 
 </script>
@@ -36,9 +31,9 @@
         display: grid;
         justify-content: center;
         align-items: center;
-        right:1.05vw;
+        right:1.5vw;
         grid-template-columns: repeat(5, 0.5fr);
-        row-gap: 2vh;
+        gap: 2vh 1vw;
     }
 
     #kekw{
