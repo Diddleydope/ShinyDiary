@@ -21,7 +21,7 @@ export const generation5 = persisted('genFive', new Array<DexMons>()); //650
 export const generation6 = persisted('genSix', new Array<DexMons>()); //722
 export const generation7 = persisted('genSeven', new Array<DexMons>()); //810
 export const generation8 = persisted('genEight', new Array<DexMons>()); //906
-export const generation9 = persisted('genNine', new Array<DexMons>()); //1000
+export const generation9 = persisted('genNine_v2', new Array<DexMons>()); //1000
 export const incrementKeybind = writable('TAB');
 export const incrementAmount = writable(1);
 //EMPTY THESE ON APP CLOSE!!!
