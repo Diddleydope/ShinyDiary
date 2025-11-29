@@ -183,7 +183,7 @@ function pruneUndefined<T extends Record<string, unknown>>(obj: T): Partial<T> {
 void (async () => {
 	try {
 		await main();
-		console.log('Finished merging Pokémon into single collection.');
+		console.log('Finished merging Pokémon into single collection');
 	} catch (error) {
 		console.error('Merge failed:', error);
 		process.exit(1);
