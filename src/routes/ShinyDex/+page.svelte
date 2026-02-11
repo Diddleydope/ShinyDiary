@@ -5,26 +5,30 @@
         generation3,generation4,generation5, generation6,
         generation7, generation8, generation9, tempPokemonList, tempArray, currentGen, currentGenLength} from '../store';
     import { loadPokemon } from '$lib/pokemon-loader';
+    import {onMount} from 'svelte';
+    import type { CombinedPokemonData } from '$lib/dex-mons';
+    
 
-   $: pokemonFilter = ""
-   $tempPokemonList = [...$pokemonList];
-   
+   let pokemonFilter = "";
+   let originalPokemonList: CombinedPokemonData[] = [];
+
+    onMount(() => {
+        $tempPokemonList = [...$pokemonList];
+    });
+
+    $: if ($pokemonList.length > 0 && originalPokemonList.length === 0) {
+        originalPokemonList = [...$pokemonList];
+    }
 
    function filterPokemon(){
-       let counter = 0;
-       $tempArray = [];
-       $pokemonList = []; //empty original list
-       $pokemonList = [...$tempPokemonList]; //refill it w original content
-       //$tempPokemonList = [...$pokemonList];
-       
-      for(let i = 0; i<$pokemonList.length; i++){
-           if($pokemonList[i].name.includes(pokemonFilter) == true){
-               $tempArray[counter] = $pokemonList[i];
-               counter = counter + 1;
-           }
-      }
-      $pokemonList = [];
-      $pokemonList = [...$tempArray];
+       if(pokemonFilter.trim() === ""){
+            pokemonList.set([...originalPokemonList]);
+       }else{
+        const filteredResults = originalPokemonList.filter(pokemon =>
+            pokemon.name.toLowerCase().includes(pokemonFilter.toLowerCase())
+        );
+        pokemonList.set(filteredResults);
+       }
    }
 </script>
 
