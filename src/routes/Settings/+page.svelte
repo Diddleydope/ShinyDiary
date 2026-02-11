@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {showComponent, shinyCounter, currentHuntScreen, incrementAmount,
+    import {showComponent, currentHuntScreen, incrementAmount,
             incrementKeybind} from '../store'
 
     $: buttonText = $incrementKeybind

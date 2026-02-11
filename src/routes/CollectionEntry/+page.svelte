@@ -3,12 +3,10 @@ import 'firebase/firestore';
 import { updateDoc, doc } from "firebase/firestore";
 import { loggedIn } from '../store';
 import Modal from '../PokeDetails/+page.svelte';
+import type { CombinedPokemonData } from '$lib/dex-mons';
 
 
-export let imageSource:string;
-export let pokemonName:string; 
-export let pokedexNumber:number;
-export let completedCounter:number;
+export let pokemon: CombinedPokemonData;
 
 
 let showModal = false;
@@ -17,27 +15,27 @@ let showModal = false;
 
 <button class="enclosureCompleted" on:click={() => (showModal = true)}>
     {#if $loggedIn==true}
-        <h2 id="pokename">{pokemonName}</h2>
+        <h2 id="pokename">{pokemon.name}</h2>
         <div id="pokeimagecontainer">
-            <img src={imageSource} alt="" class="pokeImages">
+            <img src={pokemon.shinyURL} alt="" class="pokeImages">
         </div>
-        <div class="counter">{completedCounter}</div>
+        <div class="counter">{pokemon.counter}</div>
     {/if}
 </button>
 <Modal bind:showModal>
 	<h2 slot="header" id="modalheader">
-		{pokemonName}
+		{pokemon.name}
 	</h2>
 
     <div id="pokeimagecontainerModule">
-        <img src={imageSource} alt="" class="pokeImages">
+        <img src={pokemon.shinyURL} alt="" class="pokeImages">
     </div>
 
 	<ol class="poke-info">
 		Here is information on this Pokémon
 	</ol> 
 
-    <div class="congratulations">Congratulations on finding a shiny {pokemonName}!</div>
+    <div class="congratulations">Congratulations on finding a shiny {pokemon.name}!</div>
 </Modal>
 
 
@@ -52,7 +50,7 @@ let showModal = false;
         top:10vh;
         left:1.5vw;
         transition: ease-out 0.25s;
-        border-radius: 1.5rem;
+        border-radiwus: 1.5rem;
     }
 
     .enclosureCompleted:hover{

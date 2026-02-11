@@ -35,9 +35,7 @@
         <div class="gridContainer">
             {#each $pokemonList as attribute}
                 {#if attribute.active == true}
-                    <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
-                    pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active} 
-                    completedStatus={attribute.completedStatus}/>
+                    <DexEntry pokemon={attribute} />
                 {/if}
             {/each}
         </div>

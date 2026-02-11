@@ -16,6 +16,7 @@
        $pokemonList = []; //empty original list
        $pokemonList = [...$tempPokemonList]; //refill it w original content
        //$tempPokemonList = [...$pokemonList];
+       
       for(let i = 0; i<$pokemonList.length; i++){
            if($pokemonList[i].name.includes(pokemonFilter) == true){
                $tempArray[counter] = $pokemonList[i];
@@ -25,11 +26,6 @@
       $pokemonList = [];
       $pokemonList = [...$tempArray];
    }
-
-   
-
-   //PROBLEM IS WITH DISPLAYING COUNTER ON DEX ENTRY AND IN ACTIVE HUNTS. GIVE OVER STATUS AND COUNTER
-   //AS PARAMETER
 </script>
 
 
@@ -52,17 +48,8 @@
             <input type="text" class="inputbox" bind:value={pokemonFilter} placeholder="Search..." on:input={filterPokemon}>
         </div>
        <div class="gridContainer">
-           {#each $pokemonList as attribute}
-                {#if attribute.completedStatus}
-                    <DexEntry imageSource={attribute.shinyURL} pokemonName={attribute.name} 
-                    pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active} 
-                    completedStatus={attribute.completedStatus} />
-                
-                {:else}
-                    <DexEntry imageSource={attribute.imgURL} pokemonName={attribute.name} 
-                        pokedexNumber={attribute.dexNr} pokemonStatus={attribute.active} 
-                        completedStatus={attribute.completedStatus} />
-                {/if}
+           {#each $pokemonList as pokemon}
+                <DexEntry pokemon={pokemon} />
            {/each}
        </div>
       

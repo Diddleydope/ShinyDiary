@@ -10,6 +10,10 @@ type PokemonApiResponse = {
 		front_default: string | null;
 		front_shiny: string | null;
 		other?: {
+			home?: {
+				front_default: string | null;
+				front_shiny: string | null;
+			};
 			['official-artwork']?: {
 				front_default: string | null;
 				front_shiny: string | null;
@@ -36,7 +40,14 @@ type GenerationRange = {
 
 // Update late Gen 9 entries only (newest Pokédex numbers)
 const generationRanges: GenerationRange[] = [
-	{ gen: 9, startDex: 1000, endDex: 1025 }
+	{ gen: 2, startDex: 1, endDex: 251 },
+	{ gen: 3, startDex: 1, endDex: 386 },
+	{ gen: 4, startDex: 1, endDex: 493 },
+	{ gen: 5, startDex: 1, endDex: 649 },
+	{ gen: 6, startDex: 1, endDex: 721 },
+	{ gen: 7, startDex: 1, endDex: 809 },
+	{ gen: 8, startDex: 1, endDex: 905 },
+	{ gen: 9, startDex: 1, endDex: 1025 }
 ];
 const defaultBucket = 'shinydiary-91a6f.appspot.com';
 

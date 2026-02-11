@@ -2,18 +2,21 @@ export class DexMons {
 	constructor(
 		public imgURL: string,
 		public name: string,
-		public active: boolean,
 		public dexNr: number,
-		public shinyURL: string,
-		public uniqueCounter: number,
-		public completedStatus: boolean
+		public shinyURL: string
 	) {
 		this.imgURL = imgURL;
 		this.name = name;
-		this.active = active;
 		this.dexNr = dexNr;
 		this.shinyURL = shinyURL;
-		this.uniqueCounter = uniqueCounter;
-		this.completedStatus = completedStatus;
 	}
 }
+
+export interface UserPokemonHunt {
+    dexNr: number;
+    active: boolean;
+    completedStatus: boolean;
+    counter: number;
+}
+
+export interface CombinedPokemonData extends DexMons, UserPokemonHunt {}

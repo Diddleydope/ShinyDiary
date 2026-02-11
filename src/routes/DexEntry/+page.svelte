@@ -1,163 +1,86 @@
 <script lang="ts">
     import 'firebase/firestore';
-    import { updateDoc, doc } from "firebase/firestore";
-    import { loggedIn, showComponent, currentHuntScreen, shinyCounter,
-            generation2, generation3, generation4, generation5, generation6, generation7,
-            generation8, generation9, currentGen, currentGenLength } from '../store';
+    import { loggedIn, showComponent, currentHuntScreen, currentGen } from '../store';
     import { db } from '$lib/firebase';
     import Modal from '../PokeDetails/+page.svelte';
+    import type { CombinedPokemonData } from "$lib/dex-mons";
+    import { get } from 'svelte/store'; // Added for store.update
+    import { updatePokemonHuntStatus } from '$lib/huntStoreUtils'; // Import the centralized function
 
     let showModal = false;
 
-    
-    export let imageSource:string;
-    export let pokemonName:string; 
-    export let pokedexNumber:number;
-    export let pokemonStatus:boolean;
-    export let completedStatus:boolean;
+    // DexEntry now receives a single CombinedPokemonData object as a prop
+    export let pokemon: CombinedPokemonData;
 
-
-
-    function newHunt(url:string, name:string, dexNr:number){ //HERE CHANGE "ACTIVE" ATTRIBUTE.
+    function newHuntClicked(selectedPokemon: CombinedPokemonData){
         console.log($showComponent)
-        $shinyCounter[dexNr] = 0;
-        $currentHuntScreen = [url, name, dexNr];
+        // Update Firestore: set active to true, completedStatus to false, counter to 0
+        updatePokemonHuntStatus(selectedPokemon.dexNr, { active: true, completedStatus: false, counter: 0 });
+
+        // Update the currentHuntScreen store with the new CombinedPokemonData object
+        $currentHuntScreen = { ...selectedPokemon, active: true, completedStatus: false, counter: 0 };
         showComponent.set(true);
         console.log($showComponent);
-        updateDb(true, dexNr);//NEED TO UPDATE IN ALL ARRAYS !!
-        updateArrays(true, dexNr);
     }
 
-    function continueHunt(url:string, name:string, dexNr:number){
-        $currentHuntScreen = [url, name, dexNr];
+    function continueHuntClicked(selectedPokemon: CombinedPokemonData){
+        $currentHuntScreen = selectedPokemon; // Set as CombinedPokemonData
         showComponent.set(true);
     }
-    /*
-    gen 2: 252
-    gen 3: 387
-    Gen 4: 494
-    Gen 5: 650
-    Gen 6: 722
-    Gen 7: 810
-    Gen 8: 906
-    Gen 9: 1000
-*/
-    export function updateArrays(val:boolean, dexnr:number){//problem is trying to access gens where pokemon dont exist
-        console.log(val, "hihi")
-        if($generation2.length>1&&dexnr<=252){
-            $generation2[dexnr-1].active = val;
-        }
-        if($generation3.length>1 && dexnr<=387){
-            $generation3[dexnr-1].active = val;
-        }
-        if($generation4.length>1 && dexnr<=494){
-            $generation4[dexnr-1].active = val;
-        }
-        if($generation5.length>1 && dexnr<=650){
-            $generation5[dexnr-1].active = val;
-        }
-        if($generation6.length>1 && dexnr<=722){
-            $generation6[dexnr-1].active = val;
-        }
-        if($generation7.length>1 && dexnr<=810){
-            $generation7[dexnr-1].active = val;
-        }
-        if($generation8.length>1 && dexnr<=906){
-            $generation8[dexnr-1].active = val;
-        }
-        $generation9[dexnr-1].active = val;
-
-    }
-
-    export function updateDb(val:boolean, dexnr:number){//problem is trying to access gens where pokemon dont exist
-        if(dexnr<252){
-            let reference = doc(db, 'Pokémon/Generation' + 2 + '/Pokémon/' + dexnr);
-            updateDoc(reference, {active: val});
-        }
-        if(dexnr<=387){
-            let reference = doc(db, 'Pokémon/Generation' + 3 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-        if(dexnr<=494){
-            let reference = doc(db, 'Pokémon/Generation' + 4 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-        if(dexnr<=650){
-            let reference = doc(db, 'Pokémon/Generation' + 5 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-        if(dexnr<=722){
-            let reference = doc(db, 'Pokémon/Generation' + 6 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-        if(dexnr<=810){
-            let reference = doc(db, 'Pokémon/Generation' + 7 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-        if(dexnr<=906){
-            let reference = doc(db, 'Pokémon/Generation' + 8 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        }
-   
-        let reference = doc(db, 'Pokémon/Generation' + 9 + '/Pokémon/' + dexnr);
-        updateDoc(reference, {active: val});
-        
-        
-}
 
 </script>
 
 
-{#if pokemonStatus==true}
+{#if pokemon.active}
     <button class="enclosureActive" on:click={() => (showModal = true)}>
-        {#if $loggedIn==true}
-            <h2 id="pokename">{pokemonName}</h2>
+        {#if $loggedIn}
+            <h2 id="pokename">{pokemon.name}</h2>
             <div id={"pokeimagecontainer" + $currentGen}>
-                <img src={imageSource} alt="" class="pokeImages">
+                <img src={pokemon.imgURL} alt="" class="pokeImages">
             </div>
-            <div class="counter">{$shinyCounter[pokedexNumber]}</div>
+            <div class="counter">{pokemon.counter}</div>
         {/if}
     </button>
-{:else if completedStatus==true}
+{:else if pokemon.completedStatus}
     <button class="enclosureCompleted" on:click={() => (showModal = true)}>
-        {#if $loggedIn==true}
-            <h2 id="pokename">{pokemonName}</h2>
+        {#if $loggedIn}
+            <h2 id="pokename">{pokemon.name}</h2>
             <div id={"pokeimagecontainer" + $currentGen}>
-                <img src={imageSource} alt="" class="pokeImages">
+                <img src={pokemon.shinyURL} alt="" class="pokeImages">
             </div>
             <div class="counter">Found!</div>
         {/if}
     </button>
 {:else}
     <button class="enclosure" on:click={() => (showModal = true)}>
-        {#if $loggedIn==true}
-            <h2 id="pokename">{pokemonName}</h2>
+        {#if $loggedIn}
+            <h2 id="pokename">{pokemon.name}</h2>
             <div id={"pokeimagecontainer" + $currentGen}>
-                <img src={imageSource} alt="" class="pokeImages">
+                <img src={pokemon.imgURL} alt="" class="pokeImages">
             </div>
-            
+
         {/if}
     </button>
 {/if}
 
 <Modal bind:showModal>
-	<h2 slot="header" id="modalheader">
-		{pokemonName}
-	</h2>
+    <h2 slot="header" id="modalheader">
+        {pokemon.name}
+    </h2>
 
     <div id="pokeimagecontainerModule">
-        <img src={imageSource} alt="" class="pokeImages">
+        <img src={pokemon.imgURL} alt="" class="pokeImages">
     </div>
 
-	<ol class="poke-info">
-		Here is information on this Pokémon
-	</ol> 
-    {#if pokemonStatus==false}
-        <button id="startHuntButton" on:click={() => (newHunt(imageSource,pokemonName, pokedexNumber))}>
+    <ol class="poke-info">
+        Here is information on this Pokémon
+    </ol>
+    {#if !pokemon.active}
+        <button id="startHuntButton" on:click={() => (newHuntClicked(pokemon))}>
             <span class="spankekw">Start Hunt</span>
         </button>
     {:else}
-        <button id="continueHuntButton" on:click={() => (continueHunt(imageSource,pokemonName, pokedexNumber))}>Continue Hunt</button>
+        <button id="continueHuntButton" on:click={() => (continueHuntClicked(pokemon))}>Continue Hunt</button>
     {/if}
 </Modal>
 
@@ -200,7 +123,7 @@
         box-shadow: 0.5vh 0.5vw;
         scale: 101%;
     }
-    
+
     .enclosureActive:hover{
         background-color:orange;
         box-shadow: 0.5vh 0.5vw;
@@ -405,7 +328,7 @@
     left:49vw;
     top:20vh;
     height:10vh;
-    
+
     width:13vw;
     -webkit-text-stroke-color: black;
     -webkit-text-stroke-width: 0.7px;
@@ -436,7 +359,7 @@
         background-color:#32CD32;
         box-shadow: 1vh 1vw;
         scale: 110%;
-        
+
     }
 
 

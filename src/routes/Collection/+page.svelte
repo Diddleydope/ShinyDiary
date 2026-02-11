@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
     import CollectionEntry from '../CollectionEntry/+page.svelte';
-    import { loggedIn, pokemonList, shinyCounter } from '../store';
+    import { loggedIn, pokemonList } from '../store';
 
     let nothingCompleted = true;
     $: nothingCompleted = !$pokemonList.some((pokemon) => pokemon.completedStatus);
@@ -14,10 +14,9 @@
         <div id="kekw">You Currently have no Completed Hunts!</div>
     {:else}
         <div class="gridContainer">
-            {#each $pokemonList as attribute}
-                {#if attribute.completedStatus == true}
-                    <CollectionEntry imageSource={attribute.shinyURL} pokemonName={attribute.name} 
-                    pokedexNumber={attribute.dexNr} completedCounter={$shinyCounter[attribute.dexNr]}/>
+            {#each $pokemonList as pokemon}
+                {#if pokemon.completedStatus == true}
+                    <CollectionEntry pokemon={pokemon}/>
                 {/if}
             {/each}
         </div>
