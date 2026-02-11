@@ -26,8 +26,10 @@ function getGenerationStore(generation: number): Writable<CombinedPokemonData[]>
     return specificGenStore;
 }
 
-// Reusable function to update hunt status
-export async function updatePokemonHuntStatus(dexNr: number, updates: Partial<CombinedPokemonData>) {
+let lastSaveTimestamp = 0;
+const THROTTLE_DELAY_MS = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+export async function saveHuntToFirestore(dexNr: number, updates: Partial<CombinedPokemonData>){
     const auth = getAuth();
     const userId = auth.currentUser?.uid;
 
@@ -44,8 +46,22 @@ export async function updatePokemonHuntStatus(dexNr: number, updates: Partial<Co
         } else {
             await updateDoc(userHuntRef, updates); // Update if it exists
         }
-        
-        // Update local generation store
+    }catch (error) {
+        console.error(`Error updating hunt status for Pokémon/${dexNr}:`, error);
+    }
+    lastSaveTimestamp = Date.now();
+}
+
+export function throttledSave(dexNr: number, updates: Partial<CombinedPokemonData>){
+    const now = Date.now();
+    if ((now - lastSaveTimestamp) > THROTTLE_DELAY_MS) {
+        saveHuntToFirestore(dexNr, updates);
+    }
+}
+// Reusable function to update hunt status
+export function updateLocalHuntState(dexNr: number, updates: Partial<CombinedPokemonData>) {  
+    // Update local generation store
+    try{
         const currentGenStore = getGenerationStore(get(currentGen));
         currentGenStore.update(list => {
             const index = list.findIndex(p => p.dexNr === dexNr);
@@ -63,8 +79,8 @@ export async function updatePokemonHuntStatus(dexNr: number, updates: Partial<Co
             }
             return list;
         });
-
-    } catch (error) {
+    }catch (error) {
         console.error(`Error updating hunt status for Pokémon/${dexNr}:`, error);
     }
-}
+} 
+

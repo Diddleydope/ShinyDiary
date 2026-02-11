@@ -5,7 +5,7 @@
     import Modal from '../PokeDetails/+page.svelte';
     import type { CombinedPokemonData } from "$lib/dex-mons";
     import { get } from 'svelte/store'; // Added for store.update
-    import { updatePokemonHuntStatus } from '$lib/huntStoreUtils'; // Import the centralized function
+    import { saveHuntToFirestore, updateLocalHuntState } from '$lib/huntStoreUtils'; // Import the centralized function
 
     let showModal = false;
 
@@ -15,7 +15,8 @@
     function newHuntClicked(selectedPokemon: CombinedPokemonData){
         console.log($showComponent)
         // Update Firestore: set active to true, completedStatus to false, counter to 0
-        updatePokemonHuntStatus(selectedPokemon.dexNr, { active: true, completedStatus: false, counter: 0 });
+        saveHuntToFirestore(selectedPokemon.dexNr, { active: true, completedStatus: false, counter: 0 });
+        updateLocalHuntState(selectedPokemon.dexNr, { active: true, completedStatus: false, counter: 0 });
 
         // Update the currentHuntScreen store with the new CombinedPokemonData object
         $currentHuntScreen = { ...selectedPokemon, active: true, completedStatus: false, counter: 0 };

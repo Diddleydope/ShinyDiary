@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
     import { register, unregister, unregisterAll } from '@tauri-apps/api/globalShortcut';
-    import { updatePokemonHuntStatus } from '$lib/huntStoreUtils'; // Import the centralized function
+    import { saveHuntToFirestore, updateLocalHuntState, throttledSave } from '$lib/huntStoreUtils'; // Import the centralized function
 
     onMount(() => {
         const setupListener = async () => {
@@ -19,7 +19,8 @@
                 const currentCounter = $currentHuntScreen.counter || 0;
                 const newCounter = currentCounter + $incrementAmount;
 
-                await updatePokemonHuntStatus(dexNr, { counter: newCounter });
+                await updateLocalHuntState(dexNr, { counter: newCounter });
+                throttledSave(dexNr, { counter: newCounter });
 
                 currentHuntScreen.update(huntData => {
                     if (huntData) {
@@ -33,23 +34,30 @@
     })
 
     async function closeHuntingScreen(){
+        const huntData = $currentHuntScreen;
         await unregister($incrementKeybind);
         showComponent.set(false);
         currentHuntScreen.set(null); 
+        if (huntData) {
+            await updateLocalHuntState(huntData.dexNr, { active: true, counter: (huntData.counter || 0) });
+            await saveHuntToFirestore(huntData.dexNr, { active: true, counter: (huntData.counter || 0) });
+        }
     }
 
     async function endHunt(dexNr: number){
         await unregister($incrementKeybind);
         showComponent.set(false);
         currentHuntScreen.set(null); 
-        await updatePokemonHuntStatus(dexNr, { active: false, counter: 0 });
+        await saveHuntToFirestore(dexNr, { active: false, counter: 0 });
+        await updateLocalHuntState(dexNr, { active: false, counter: 0 });
     }
 
     async function completeHunt(dexNr:number){
         await unregister($incrementKeybind);
         showComponent.set(false);
         currentHuntScreen.set(null); 
-        await updatePokemonHuntStatus(dexNr, { completedStatus: true, active: false, counter: 0 });
+        await saveHuntToFirestore(dexNr, { completedStatus: true, active: false, counter: 0 });
+        await updateLocalHuntState(dexNr, { completedStatus: true, active: false, counter: 0 });
     }
 
     let displayedCounter = 0;
